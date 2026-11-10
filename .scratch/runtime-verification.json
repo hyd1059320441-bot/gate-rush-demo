@@ -1,0 +1,29 @@
+{
+  "device": "PB331XPGL6040019G",
+  "package": "com.example.gaterush.p7c91a3e2",
+  "localBuild": {"success": true, "log": "local-build.log"},
+  "managedCodegenBuild": {"success": false, "rootRun": "run-c721c46b-5bc5-4f6b-9b42-b618f21073fb", "documentedIn": "workflow-limitations.md"},
+  "unitTests": {"tests": 22, "failures": 0, "errors": 0, "includesCanonicalFiveLevelCompletion": true, "log": "tests-final.log"},
+  "architecture": "PASS, 0 warnings",
+  "spatialUiStyle": "PASS, 0 errors, 0 warnings",
+  "placementSource": "PASS, 0 violations, 2 reviewed body-face-label advisories",
+  "assetLoad": {"required": 7, "ready": 7},
+  "runner": {"neutralFootY": 0.0, "heightMeters": 0.23499997, "hipJointCount": 2},
+  "compositionBoundsMeters": {"owner": "placementOwner", "min": [-0.93999994, 0.691, -2.92], "max": [0.93999994, 1.17, -0.8499999], "uniformFit": 0.14},
+  "boundedObservation": {
+    "durationSeconds": 40,
+    "gameplayElapsedObservedSeconds": 30.06638,
+    "pid": 31708,
+    "aliveAfterObservation": true,
+    "hpLastObserved": 100,
+    "hipSwingDegreesObserved": [17.045322, -12.375358, -27.404465, -21.790762],
+    "eventsObserved": ["gate shatter 18", "reward 8", "enemy death 14", "heal 8", "pickup 8"],
+    "log": "device-live-runtime.log"
+  },
+  "limits": [
+    "Headset visual quality, occlusion, gesture feel and full on-device campaign are UNOBSERVED; source model geometry/color six-view review is separate evidence.",
+    "One earlier diagnostic process was later absent; device ring buffer had overwritten its exit history. Fresh bounded reproduction stayed alive; prior exit cause is unconfirmed.",
+    "Generated originals exceed the designer's preferred triangle budget for five archetypes; runtime derivatives resize textures only and retain source geometry. No FPS claim.",
+    "Optional audio is omitted in this prototype."
+  ]
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "asset": "RunnerUpperImage",
+    "sourceSha256": "fdaf989d8e0518003a5755e82a158473cc634aeb39532786b1d9af1fb4e0fd40",
+    "runtimeSha256": "021d1fe72753d556ac1dc113e2d4cd041d42c2621a543e7f3cad4a6e0559b4f7",
+    "derivation": "Texture resize to <=1024, unchanged geometry/UV/material layout; original preserved"
+  },
+  {
+    "asset": "RunnerSingleLegImage",
+    "sourceSha256": "45147f219891f9fd1d4a7a56d63836ace75efdf97e2911ca37bec350a1b76bae",
+    "runtimeSha256": "2fba36b6b3063e4f1da97fb9b679977fc766e35cb306c01409b6acdc3dfe9256",
+    "derivation": "Texture resize to <=1024, unchanged geometry/UV/material layout; original preserved"
+  },
+  {
+    "asset": "Blaster",
+    "sourceSha256": "81a5eb45f2cc54dbd59533a77900e634eb4f939f0d4a5ad17c8d60e449ef74c8",
+    "runtimeSha256": "d7abd295815828335b1f3ce8b6417b84b53cb43a9423e701a4958da576d0a2cd",
+    "derivation": "Texture resize to <=1024, unchanged geometry/UV/material layout; original preserved"
+  },
+  {
+    "asset": "GateFrame",
+    "sourceSha256": "bdd486d98c89c7bcb7d4c3c3842552d53bf1f78b38e6c6b0819846329a4f21a8",
+    "runtimeSha256": "715980f9eb812a8ffe2007c99813ece1e76d8ec2baa82c7bea89fd6dd057447d",
+    "derivation": "Texture resize to <=1024, unchanged geometry/UV/material layout; original preserved"
+  },
+  {
+    "asset": "HoverEnemy",
+    "sourceSha256": "415f74793935cf4124ea2462dfead6aa4bf5c615afcee51d1e2b8ef0ff65e74b",
+    "runtimeSha256": "e839b7291eba2e56438fd1969c54279249351d21b5b5e3d6b384284582de6a45",
+    "derivation": "Texture resize to <=1024, unchanged geometry/UV/material layout; original preserved"
+  },
+  {
+    "asset": "SupplyCrate",
+    "sourceSha256": "00063aa17024a538972f8fa2f4dc117cf193ab358e6336d44159417dc6071cff",
+    "runtimeSha256": "830504fc9130aa5300495d39aa27dbc4894895b8b6e13cc30c7c12732fa650ab",
+    "derivation": "Texture resize to <=1024, unchanged geometry/UV/material layout; original preserved"
+  },
+  {
+    "asset": "Lamp",
+    "sourceSha256": "deaf1844f61be4c0554e5aeda9a5300579f87eaf51edf16eee164ef65a42ad87",
+    "runtimeSha256": "c8019042c5afab0c9d989cdf0b67357eb14665c748fbe5cc3c1538c5b3504ec7",
+    "derivation": "Texture resize to <=1024, unchanged geometry/UV/material layout; original preserved"
+  }
+]

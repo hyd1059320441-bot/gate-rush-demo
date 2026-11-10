@@ -1,0 +1,3389 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "projectName": "火力冲门 / Gate Rush",
+    "sourceMode": "intent_only",
+    "revision": 15,
+    "runtimeRevision04": {
+      "version": "0.4",
+      "newUpgrades": ["ICE", "CHAIN", "BURN"],
+      "upgradeCap": 2,
+      "ice": { "speedFactors": [0.6, 0.4], "durationSeconds": [1.4, 2.0], "refresh": "Keep strongest active slow and latest expiry; enemies only" },
+      "chain": { "additionalEnemies": [1, 2], "radiusM": [0.32, 0.52], "damage": [6, 8], "policy": "Nearest distinct living enemies; once per bullet; armour halves unless pierce is active; no recursive chains" },
+      "burn": { "tickDamage": [2, 3], "tickIntervalSeconds": 0.4, "durationSeconds": 2.0, "refresh": "Keep due tick and strongest active damage; enemies only; ignores armour" },
+      "combinations": "Scatter, pierce, explosion, ice, chain and burn remain independent snapshots on each fired bullet. Direct, splash and arc enemy hits apply ice and burn.",
+      "shotStyles": ["NORMAL", "PIERCE", "EXPLOSIVE", "ICE", "CHAIN", "BURN"],
+      "appearance": "Highest active element selects core style (burn, chain, ice, explosive, pierce, normal); electric trail and ice collar show combined elements; source barrel cells also remain visible",
+      "enemyViewSlots": 28,
+      "arcViewSlots": 24,
+      "geometry": "Core half-width and half-depth define authoritative sweep. Trails and collars are decorations. Imported body scale and shot height retained from 0.3.",
+      "audio": "Replace shot, impact and enemy WAVs with noise-free midrange sine sweeps; 16 ms attack, 50 ms release; reduced gains 0.15, 0.11 and 0.22. Preserve foreground/focus mute and conservative mixed headroom."
+    },
+    "runtimeRevision03": {
+      "runnerBodyScale": 0.7,
+      "targetBodyScale": { "gate": 1.15, "enemy": 1.75, "crate": 1.5, "obstacle": 1.0 },
+      "projectileHeightM": 0.112,
+      "projectileStartDepthM": 0.09,
+      "enemyViewSlots": 14,
+      "enemyCountByLevelIncludingTerminal": [26, 26, 25, 36, 33],
+      "reinforcements": {
+        "startSeconds": 3,
+        "intervalSeconds": 4,
+        "lastSecondsByLevel": [43, 43, 43, 43, 39],
+        "healthByLevel": [32, 40, 48, 56, 64],
+        "formation": "Two alternating lanes in levels 1-3; three lanes in levels 4-5. Skip a lane already occupied by a base spawn within 0.75 seconds.",
+        "records": "Merge these reinforcements with the retained base course events, then sort by spawn time."
+      },
+      "geometrySource": "domain/model/CombatGeometry.kt",
+      "campaignSource": "data/repository/LevelRepository.kt",
+      "baseDimensions": "Existing artist model and scene dimensions are before the explicit runtime body scale."
+    }
+  },
+  "experience": {
+    "subject": "third-person toy sci-fi auto-run durability-gate shooter",
+    "user": "single player using a captured hand/controller drag",
+    "context": "seated or standing, near floating course in a soft toy landscape with painted sky, rounded distant hills and gardens; comfort not yet verified",
+    "singleJob": "Choose lanes to break reward gates, build a weapon combination and defeat the course target",
+    "space": "full",
+    "form": "stage_full",
+    "signature": "A running cyan toy behind a shattering yellow durability gate, with side scenery revealing forward travel"
+  },
+  "theme": {
+    "scheme": "vibrant",
+    "colorScheme": {
+      "fillPrimary": {
+        "source": "vibrant",
+        "role": "fillPrimary"
+      },
+      "fillSecondary": {
+        "source": "vibrant",
+        "role": "fillSecondary"
+      },
+      "fillTertiary": {
+        "source": "vibrant",
+        "role": "fillTertiary"
+      },
+      "fillLight": {
+        "source": "vibrant",
+        "role": "fillLight"
+      },
+      "labelPrimaryLight": {
+        "source": "vibrant",
+        "role": "labelPrimaryLight"
+      },
+      "labelPrimary": {
+        "source": "vibrant",
+        "role": "labelPrimary"
+      },
+      "labelSecondary": {
+        "source": "vibrant",
+        "role": "labelSecondary"
+      },
+      "labelTertiary": {
+        "source": "vibrant",
+        "role": "labelTertiary"
+      },
+      "labelQuaternary": {
+        "source": "vibrant",
+        "role": "labelQuaternary"
+      },
+      "lightenHover": {
+        "source": "vibrant",
+        "role": "lightenHover"
+      },
+      "lightenPressed": {
+        "source": "vibrant",
+        "role": "lightenPressed"
+      },
+      "error": {
+        "source": "vibrant",
+        "role": "error"
+      },
+      "alert": {
+        "source": "vibrant",
+        "role": "alert"
+      },
+      "passable": {
+        "source": "vibrant",
+        "role": "passable"
+      },
+      "interaction": {
+        "source": "vibrant",
+        "role": "interaction"
+      },
+      "dividerLine": {
+        "source": "vibrant",
+        "role": "dividerLine"
+      }
+    },
+    "brandColors": {
+      "sky": "#40BBDD",
+      "mint": "#88D7B4",
+      "coral": "#F18482",
+      "sun": "#F3C65D",
+      "violet": "#AAA0D9",
+      "cream": "#F7F2DE",
+      "road": "#B4C9CA",
+      "ink": "#233B4A",
+      "ground": "#A5C6B7",
+      "hill": "#88BAAB",
+      "hillFar": "#B7CFC2"
+    },
+    "typography": {
+      "headlineLarge": {
+        "family": "system-ui",
+        "sizeDp": 24,
+        "lineHeightDp": 30,
+        "weight": 700
+      },
+      "headlineSmall": {
+        "family": "system-ui",
+        "sizeDp": 16,
+        "lineHeightDp": 20,
+        "weight": 700
+      },
+      "titleMedium": {
+        "family": "system-ui",
+        "sizeDp": 16,
+        "lineHeightDp": 20,
+        "weight": 600
+      },
+      "titleSmall": {
+        "family": "system-ui",
+        "sizeDp": 14,
+        "lineHeightDp": 18,
+        "weight": 600
+      },
+      "bodyMedium": {
+        "family": "system-ui",
+        "sizeDp": 14,
+        "lineHeightDp": 18,
+        "weight": 500
+      },
+      "bodyMediumMultiline": {
+        "family": "system-ui",
+        "sizeDp": 14,
+        "lineHeightDp": 22,
+        "weight": 500
+      },
+      "bodySmall": {
+        "family": "system-ui",
+        "sizeDp": 12,
+        "lineHeightDp": 16,
+        "weight": 500
+      },
+      "labelLarge": {
+        "family": "system-ui",
+        "sizeDp": 14,
+        "lineHeightDp": 18,
+        "weight": 600
+      }
+    },
+    "spacing": {
+      "small": 8,
+      "regular": 16,
+      "medium": 24,
+      "large": 32
+    }
+  },
+  "surfaces": [
+    {
+      "id": "stage",
+      "type": "stage_mixed",
+      "defaultSize": {
+        "width": 0.84,
+        "height": 0.6,
+        "depth": 1.8,
+        "unit": "m"
+      },
+      "minSize": {
+        "width": 0.84,
+        "height": 0.6,
+        "depth": 1.8,
+        "unit": "m"
+      },
+      "maxSize": {
+        "width": 0.84,
+        "height": 0.6,
+        "depth": 1.8,
+        "unit": "m"
+      },
+      "rootNodeId": "stage-root",
+      "placement": {
+        "floorYM": 0.75,
+        "nearEdgeForwardM": 0.85,
+        "rootStable": true,
+        "sessionOnly": true,
+        "comfort": "unverified"
+      }
+    },
+    {
+      "id": "attachment",
+      "type": "planar",
+      "defaultSize": {
+        "width": 720,
+        "height": 224,
+        "unit": "dp"
+      },
+      "minSize": {
+        "width": 600,
+        "height": 264,
+        "unit": "dp"
+      },
+      "maxSize": {
+        "width": 800,
+        "height": 300,
+        "unit": "dp"
+      },
+      "rootNodeId": "ready",
+      "placement": {
+        "role": "single Stage AttachmentPanel for HUD and contextual actions",
+        "anchor": "in front of near edge below course reading area",
+        "systemBackground": true,
+        "noNavigation": true,
+        "noExtraToolbars": true
+      }
+    }
+  ],
+  "initialStateId": "loading",
+  "states": [
+    {
+      "id": "loading",
+      "surfaceRoots": {
+        "stage": "stage-root",
+        "attachment": "loading"
+      }
+    },
+    {
+      "id": "ready",
+      "surfaceRoots": {
+        "stage": "stage-root",
+        "attachment": "ready"
+      }
+    },
+    {
+      "id": "running",
+      "surfaceRoots": {
+        "stage": "stage-root",
+        "attachment": "hud"
+      }
+    },
+    {
+      "id": "paused",
+      "surfaceRoots": {
+        "stage": "stage-root",
+        "attachment": "paused"
+      }
+    },
+    {
+      "id": "failed",
+      "surfaceRoots": {
+        "stage": "stage-root",
+        "attachment": "failed"
+      }
+    },
+    {
+      "id": "won",
+      "surfaceRoots": {
+        "stage": "stage-root",
+        "attachment": "won"
+      }
+    },
+    {
+      "id": "complete",
+      "surfaceRoots": {
+        "stage": "stage-root",
+        "attachment": "complete"
+      }
+    },
+    {
+      "id": "rules",
+      "surfaceRoots": {
+        "stage": "stage-root",
+        "attachment": "rules"
+      }
+    },
+    {
+      "id": "load-error",
+      "surfaceRoots": {
+        "stage": "stage-root",
+        "attachment": "load-error"
+      }
+    },
+    {
+      "id": "exited",
+      "surfaceRoots": {
+        "stage": "stage-root",
+        "attachment": "exited"
+      }
+    }
+  ],
+  "transitions": [
+    {
+      "id": "asset-ready",
+      "from": "loading",
+      "to": "ready",
+      "trigger": {
+        "nodeId": "course",
+        "event": "required-load-ready"
+      }
+    },
+    {
+      "id": "asset-fail",
+      "from": "loading",
+      "to": "load-error",
+      "trigger": {
+        "nodeId": "course",
+        "event": "required-load-failed"
+      }
+    },
+    {
+      "id": "start",
+      "from": "ready",
+      "to": "running",
+      "trigger": {
+        "nodeId": "start",
+        "event": "click-action"
+      }
+    },
+    {
+      "id": "pause",
+      "from": "running",
+      "to": "paused",
+      "trigger": {
+        "nodeId": "pause",
+        "event": "click-action"
+      }
+    },
+    {
+      "id": "suspend",
+      "from": "running",
+      "to": "paused",
+      "trigger": {
+        "nodeId": "course",
+        "event": "pause-request"
+      }
+    },
+    {
+      "id": "resume",
+      "from": "paused",
+      "to": "running",
+      "trigger": {
+        "nodeId": "resume",
+        "event": "click-action"
+      }
+    },
+    {
+      "id": "rules-open",
+      "from": "ready",
+      "to": "rules",
+      "trigger": {
+        "nodeId": "rules-open",
+        "event": "click-action"
+      }
+    },
+    {
+      "id": "rules-paused",
+      "from": "paused",
+      "to": "rules",
+      "trigger": {
+        "nodeId": "rules-paused",
+        "event": "click-action"
+      }
+    },
+    {
+      "id": "rules-back",
+      "from": "rules",
+      "to": "ready",
+      "trigger": {
+        "nodeId": "rules-back",
+        "event": "click-action"
+      }
+    },
+    {
+      "id": "clear",
+      "from": "running",
+      "to": "won",
+      "trigger": {
+        "nodeId": "course",
+        "event": "level-cleared"
+      }
+    },
+    {
+      "id": "fail",
+      "from": "running",
+      "to": "failed",
+      "trigger": {
+        "nodeId": "course",
+        "event": "runner-failed"
+      }
+    },
+    {
+      "id": "retry",
+      "from": "failed",
+      "to": "running",
+      "trigger": {
+        "nodeId": "retry",
+        "event": "click-action"
+      }
+    },
+    {
+      "id": "next",
+      "from": "won",
+      "to": "ready",
+      "trigger": {
+        "nodeId": "next",
+        "event": "click-action"
+      }
+    },
+    {
+      "id": "play-again",
+      "from": "complete",
+      "to": "ready",
+      "trigger": {
+        "nodeId": "play-again",
+        "event": "click-action"
+      }
+    },
+    {
+      "id": "retry-assets",
+      "from": "load-error",
+      "to": "loading",
+      "trigger": {
+        "nodeId": "retry-assets",
+        "event": "click-action"
+      }
+    },
+    {
+      "id": "return",
+      "from": "exited",
+      "to": "loading",
+      "trigger": {
+        "nodeId": "return",
+        "event": "click-action"
+      }
+    },
+    {
+      "id": "restart",
+      "from": "paused",
+      "to": "running",
+      "trigger": {
+        "nodeId": "restart",
+        "event": "click-action"
+      },
+      "confirmation": {
+        "title": "重新开始本关？",
+        "body": "本关生命、道具和进度将重置。",
+        "confirmLabel": "重新开始",
+        "cancelLabel": "保留进度"
+      }
+    },
+    {
+      "id": "exit-ready",
+      "from": "ready",
+      "to": "exited",
+      "trigger": {
+        "nodeId": "exit-ready",
+        "event": "click-action"
+      }
+    },
+    {
+      "id": "exit-paused",
+      "from": "paused",
+      "to": "exited",
+      "trigger": {
+        "nodeId": "exit-paused",
+        "event": "click-action"
+      },
+      "confirmation": {
+        "title": "退出当前挑战？",
+        "body": "本关进度将丢失，下次挑战从第一关开始。",
+        "confirmLabel": "退出",
+        "cancelLabel": "保留进度"
+      }
+    },
+    {
+      "id": "exit-failed",
+      "from": "failed",
+      "to": "exited",
+      "trigger": {
+        "nodeId": "exit-failed",
+        "event": "click-action"
+      }
+    },
+    {
+      "id": "exit-won",
+      "from": "won",
+      "to": "exited",
+      "trigger": {
+        "nodeId": "exit-won",
+        "event": "click-action"
+      }
+    },
+    {
+      "id": "exit-complete",
+      "from": "complete",
+      "to": "exited",
+      "trigger": {
+        "nodeId": "exit-complete",
+        "event": "click-action"
+      }
+    },
+    {
+      "id": "exit-load-error",
+      "from": "load-error",
+      "to": "exited",
+      "trigger": {
+        "nodeId": "exit-load-error",
+        "event": "click-action"
+      }
+    }
+  ],
+  "actions": [
+    {
+      "id": "drag",
+      "type": "custom",
+      "purpose": "Retain captured lateral offset independent of running progress",
+      "payload": {
+        "operation": "drag"
+      }
+    },
+    {
+      "id": "confirm-cancel",
+      "type": "custom",
+      "purpose": "Cancel pending destructive transition",
+      "payload": {
+        "operation": "cancel-confirmation"
+      }
+    },
+    {
+      "id": "confirm-ok",
+      "type": "custom",
+      "purpose": "Commit only the pending confirmed transition",
+      "payload": {
+        "operation": "confirm-transition"
+      }
+    },
+    {
+      "id": "asset-ready",
+      "type": "transition",
+      "purpose": "loading to ready",
+      "transitionId": "asset-ready",
+      "payload": {
+        "operation": "none"
+      }
+    },
+    {
+      "id": "asset-fail",
+      "type": "transition",
+      "purpose": "loading to load-error",
+      "transitionId": "asset-fail",
+      "payload": {
+        "operation": "none"
+      }
+    },
+    {
+      "id": "start",
+      "type": "transition",
+      "purpose": "ready to running",
+      "transitionId": "start",
+      "payload": {
+        "operation": "reset-level"
+      }
+    },
+    {
+      "id": "pause",
+      "type": "transition",
+      "purpose": "running to paused",
+      "transitionId": "pause",
+      "payload": {
+        "operation": "none"
+      }
+    },
+    {
+      "id": "suspend",
+      "type": "transition",
+      "purpose": "running to paused",
+      "transitionId": "suspend",
+      "payload": {
+        "operation": "none"
+      }
+    },
+    {
+      "id": "resume",
+      "type": "transition",
+      "purpose": "paused to running",
+      "transitionId": "resume",
+      "payload": {
+        "operation": "none"
+      }
+    },
+    {
+      "id": "rules-open",
+      "type": "transition",
+      "purpose": "ready to rules",
+      "transitionId": "rules-open",
+      "payload": {
+        "operation": "save-return-state"
+      }
+    },
+    {
+      "id": "rules-paused",
+      "type": "transition",
+      "purpose": "paused to rules",
+      "transitionId": "rules-paused",
+      "payload": {
+        "operation": "save-return-state"
+      }
+    },
+    {
+      "id": "rules-back",
+      "type": "transition",
+      "purpose": "rules to ready",
+      "transitionId": "rules-back",
+      "payload": {
+        "operation": "restore-return-state"
+      }
+    },
+    {
+      "id": "clear",
+      "type": "transition",
+      "purpose": "running to won",
+      "transitionId": "clear",
+      "payload": {
+        "operation": "none"
+      }
+    },
+    {
+      "id": "fail",
+      "type": "transition",
+      "purpose": "running to failed",
+      "transitionId": "fail",
+      "payload": {
+        "operation": "none"
+      }
+    },
+    {
+      "id": "retry",
+      "type": "transition",
+      "purpose": "failed to running",
+      "transitionId": "retry",
+      "payload": {
+        "operation": "reset-level"
+      }
+    },
+    {
+      "id": "next",
+      "type": "transition",
+      "purpose": "won to ready",
+      "transitionId": "next",
+      "payload": {
+        "operation": "next-or-complete"
+      }
+    },
+    {
+      "id": "play-again",
+      "type": "transition",
+      "purpose": "complete to ready",
+      "transitionId": "play-again",
+      "payload": {
+        "operation": "reset-campaign"
+      }
+    },
+    {
+      "id": "retry-assets",
+      "type": "transition",
+      "purpose": "load-error to loading",
+      "transitionId": "retry-assets",
+      "payload": {
+        "operation": "retry-assets"
+      }
+    },
+    {
+      "id": "return",
+      "type": "transition",
+      "purpose": "exited to loading",
+      "transitionId": "return",
+      "payload": {
+        "operation": "reset-campaign-and-load"
+      }
+    },
+    {
+      "id": "restart",
+      "type": "transition",
+      "purpose": "paused to running",
+      "transitionId": "restart",
+      "payload": {
+        "operation": "reset-level"
+      }
+    },
+    {
+      "id": "exit-ready",
+      "type": "transition",
+      "purpose": "ready to exited",
+      "transitionId": "exit-ready",
+      "payload": {
+        "operation": "stop-run"
+      }
+    },
+    {
+      "id": "exit-paused",
+      "type": "transition",
+      "purpose": "paused to exited",
+      "transitionId": "exit-paused",
+      "payload": {
+        "operation": "stop-run"
+      }
+    },
+    {
+      "id": "exit-failed",
+      "type": "transition",
+      "purpose": "failed to exited",
+      "transitionId": "exit-failed",
+      "payload": {
+        "operation": "stop-run"
+      }
+    },
+    {
+      "id": "exit-won",
+      "type": "transition",
+      "purpose": "won to exited",
+      "transitionId": "exit-won",
+      "payload": {
+        "operation": "stop-run"
+      }
+    },
+    {
+      "id": "exit-complete",
+      "type": "transition",
+      "purpose": "complete to exited",
+      "transitionId": "exit-complete",
+      "payload": {
+        "operation": "stop-run"
+      }
+    },
+    {
+      "id": "exit-load-error",
+      "type": "transition",
+      "purpose": "load-error to exited",
+      "transitionId": "exit-load-error",
+      "payload": {
+        "operation": "stop-run"
+      }
+    }
+  ],
+  "dataCases": {
+    "normal": {
+      "game": {
+        "level": 0,
+        "levelTitle": "01 / 首次破门",
+        "hp": 100,
+        "hpLabel": "生命 100 / 100",
+        "upgrades": {
+          "spread": 0,
+          "pierce": 0,
+          "explosive": 0,
+          "speed": 0,
+          "shield": 0
+        },
+        "elapsed": 0,
+        "timeLabel": "剩余 60秒",
+        "upgradeLabel": "尚未获得道具",
+        "feedback": "自动前进 / 自动开火",
+        "failureTitle": "小人倒下了",
+        "resultLabel": "破门 0 / 击败敌人 0 / 道具 0"
+      },
+      "assets": {
+        "required": true,
+        "audio": true,
+        "audioNotice": "",
+        "errorMessage": "",
+        "loadingLabel": "正在准备玩具模型"
+      },
+      "ui": {
+        "confirmation": {
+          "title": "",
+          "body": "",
+          "confirmLabel": "",
+          "cancelLabel": ""
+        },
+        "returnState": "ready"
+      }
+    },
+    "fallback": {
+      "game": {
+        "level": 0,
+        "levelTitle": "01 / 首次破门",
+        "hp": 100,
+        "hpLabel": "生命 100 / 100",
+        "upgrades": {
+          "spread": 0,
+          "pierce": 0,
+          "explosive": 0,
+          "speed": 0,
+          "shield": 0
+        },
+        "elapsed": 0,
+        "timeLabel": "剩余 60秒",
+        "upgradeLabel": "尚未获得道具",
+        "feedback": "自动前进 / 自动开火",
+        "failureTitle": "小人倒下了",
+        "resultLabel": "破门 0 / 击败敌人 0 / 道具 0"
+      },
+      "assets": {
+        "required": true,
+        "audio": false,
+        "audioNotice": "音效暂不可用，视觉反馈正常。",
+        "errorMessage": "",
+        "loadingLabel": "正在准备玩具模型"
+      },
+      "ui": {
+        "confirmation": {
+          "title": "",
+          "body": "",
+          "confirmLabel": "",
+          "cancelLabel": ""
+        },
+        "returnState": "ready"
+      }
+    },
+    "error": {
+      "game": {
+        "level": 0,
+        "levelTitle": "01 / 首次破门",
+        "hp": 100,
+        "hpLabel": "生命 100 / 100",
+        "upgrades": {
+          "spread": 0,
+          "pierce": 0,
+          "explosive": 0,
+          "speed": 0,
+          "shield": 0
+        },
+        "elapsed": 0,
+        "timeLabel": "剩余 60秒",
+        "upgradeLabel": "尚未获得道具",
+        "feedback": "自动前进 / 自动开火",
+        "failureTitle": "小人倒下了",
+        "resultLabel": "破门 0 / 击败敌人 0 / 道具 0"
+      },
+      "assets": {
+        "required": false,
+        "audio": false,
+        "audioNotice": "音效暂不可用，视觉反馈正常。",
+        "errorMessage": "必需模型加载失败。请重试模型或退出；模型就绪前不能开始游戏。",
+        "loadingLabel": "正在准备玩具模型"
+      },
+      "ui": {
+        "confirmation": {
+          "title": "",
+          "body": "",
+          "confirmLabel": "",
+          "cancelLabel": ""
+        },
+        "returnState": "ready"
+      }
+    }
+  },
+  "nodes": [
+    {
+      "id": "course",
+      "kind": "domain_visual",
+      "rendererKey": "toy-course",
+      "purpose": "左右拖动自动奔跑、自动射击的小人，击破耐久门、叠加道具，躲避敌人和路障。",
+      "textStyle": {
+        "typography": "headlineLarge",
+        "color": "ink"
+      },
+      "props": {
+        "scope": "web_design_validation_only",
+        "applicationId": "com.example.gaterush.p7c91a3e2",
+        "stateRoles": {
+          "loading": "loading",
+          "ready": "ready",
+          "running": "running",
+          "paused": "paused",
+          "failed": "failed",
+          "won": "won",
+          "complete": "complete",
+          "rules": "rules",
+          "exited": "exited",
+          "loadError": "load-error"
+        },
+        "uiConfirmationNodeId": "confirm-dialog",
+        "pauseEvent": "pause-request",
+        "handoff": {
+          "managedRunId": "run-d89e5dc4-9e28-47bf-a7b0-f39e873c5820",
+          "managedDesignRevision": 9,
+          "workflowOwner": "parent",
+          "workflowSubmitted": false,
+          "editorOwner": "parent",
+          "modelAcceptance": "not_performed_by_designer",
+          "deviceValidation": "not_performed",
+          "parentReportedAssetUpdate": "First batch generated. RunnerTorso is a full figure rather than a separable torso; parent owns correction and asset retention.",
+          "parentReportedWorkflowError": "WORKFLOW_RUNTIME_RESUME_INVALID (child Run not waiting); parent handles recovery, designer must not resume workflow or Editor.",
+          "replicationClaim": "No original title, video, or screenshot exists. Match confirmed gameplay, not pixel-perfect replication."
+        },
+        "chosenDirection": "a",
+        "forbidden": [
+          "manual firing",
+          "dashboard navigation",
+          "Dice Snatch reuse",
+          "moving the Stage root/camera to fake running",
+          "stationary statue posing",
+          "fixed dp-to-metre ratio",
+          "required-model primitive fallback",
+          "runtime implementation facts outside design-spec.json"
+        ],
+        "geometry": {
+          "axis": "X right, Y up, Z toward viewer; runner forward is -Z",
+          "courseWidthM": 0.84,
+          "courseDepthM": 1.8,
+          "floorYM": 0.75,
+          "nearEdgeForwardM": 0.85,
+          "avatarHeightM": 0.23,
+          "avatarHalfWidthM": 0.045,
+          "avatarDepthM": 0.18,
+          "avatarForwardDriftM": 0.035,
+          "lateralLimitM": 0.32,
+          "lanesM": [
+            -0.23,
+            0,
+            0.23
+          ],
+          "conversion": "PhysicalLengthConverter for dp/physical dimensions; Stage metre values remain metres; worldScale=1 candidate verify on device",
+          "placement": "session-only placement relative to launch viewer; no plane detection, persistent physical anchor, or cross-session restoration",
+          "comfort": "candidate only, seated/standing validate at floor 0.70-0.80 m and near edge 0.80-0.90 m; never claim verified"
+        },
+        "input": {
+          "mode": "select_avatar_then_capture_horizontal_drag",
+          "capture": "capture pointer/controller id on avatar pick, retain while ray leaves silhouette",
+          "hitEnvelopeM": [
+            0.16,
+            0.28,
+            0.16
+          ],
+          "hitTargetFloorDp": 56,
+          "gain": 1,
+          "smoothingSeconds": 0.055,
+          "clampM": 0.32,
+          "deadbandM": 0.003,
+          "release": "preserve lateral x, release pointer ownership only",
+          "pointerCancel": "retain x, clear ownership",
+          "pause": "cancel capture, freeze simulation, preserve x and stacks",
+          "suspend": "pause and discard excess elapsed wall time",
+          "ray": "intersect fixed viewer-facing drag plane through avatar; use delta world X, never absolute jump",
+          "keyboard": "not primary; no manual firing control"
+        },
+        "loop": {
+          "fixedStepSeconds": 0.016666666666666666,
+          "maxFrameDeltaSeconds": 0.05,
+          "speedMps": 0.15,
+          "fireVolleysPerSecond": 4,
+          "damagePerBullet": 8,
+          "bulletSpeedMps": 1.8,
+          "bulletRadiusM": 0.007,
+          "fireRateMultiplier": 1.25,
+          "fireRateCap": 8,
+          "autoFire": "active only in running; forward parallel shots, no auto route steering",
+          "startWarmupSeconds": 0,
+          "levelReset": "HP=100, all stacks=0, lateral x=0, elapsed=0; retry same level; next starts new level, no hidden carryover",
+          "hpMax": 100,
+          "collisionDamage": 20,
+          "gateCollisionDamage": 15,
+          "invulnerabilitySeconds": 0.7,
+          "gateHitHalfWidthM": 0.115,
+          "enemyHitHalfWidthM": 0.11375,
+          "cratePickupHalfWidthM": 0.075,
+          "obstacleHalfWidthM": 0.075,
+          "collisionDepthM": 0.05,
+          "missedTargetPenalty": "nonterminal enemies/gates cause no damage unless lane collision; missed rewards are lost; terminal survives deadline => failed",
+          "armourMultiplier": 0.5,
+          "armourBypass": "pierce stack >0 bypasses armour for direct bullets; splash still armour-reduced",
+          "spawnDepthM": 1.65,
+          "terminalHoldDepthM": 0.75,
+          "terminalHalfWidthM": 0.2275,
+          "terminalDeadlineSeconds": 60,
+          "finish": "At 60 seconds, won only if HP>0 and terminal defeated, else failed; level 5 victory then complete",
+          "boss": {
+            "hitHalfWidthM": 0.364,
+            "pulseStartAfterSpawnSeconds": 6,
+            "pulseIntervalSeconds": 3,
+            "warningSeconds": 1.2,
+            "targetLane": "snapshot nearest lane to avatar at warning start",
+            "damage": 20,
+            "phase": "below half HP interval becomes 2 s; no untelegraphed damage"
+          }
+        },
+        "gateSemantics": {
+          "number": "remaining durability HP, never a positive arithmetic multiplier",
+          "label": "DURABILITY",
+          "reward": "separate named reward strip with +stack or +HP amount",
+          "hit": "subtract effective bullet damage, clamp at 0; number pulses and chips before break",
+          "break": "exactly once at HP <=0: remove collider, shatter frame/infill, apply named reward immediately to runner even if not in gate lane; no second pickup required",
+          "unbroken": "no reward; lane collision 15 damage, shatter as failure impact without grant; bypassing is permitted",
+          "rewardCaps": "cap turns into visible MAX feedback, never decreases another upgrade",
+          "simultaneous": "deduplicate target ids and reward grants; collision sweep after projectile damage so a gate broken this tick cannot hurt runner"
+        },
+        "pickups": {
+          "types": [
+            {
+              "id": "spread",
+              "label": "散射",
+              "rewardLabel": "散射 +1",
+              "short": "S",
+              "color": "mint",
+              "cap": 2,
+              "description": "One stack: 3 lanes of bullets at -0.08/0/+0.08 m; two: 5 at -0.16/-0.08/0/+0.08/+0.16 m.",
+              "bulletOffsets": [
+                [
+                  0
+                ],
+                [
+                  -0.08,
+                  0,
+                  0.08
+                ],
+                [
+                  -0.16,
+                  -0.08,
+                  0,
+                  0.08,
+                  0.16
+                ]
+              ]
+            },
+            {
+              "id": "pierce",
+              "label": "穿透",
+              "rewardLabel": "穿透 +1",
+              "short": "P",
+              "color": "violet",
+              "cap": 2,
+              "description": "Each bullet hits 1 + stack count distinct targets, never the same target twice."
+            },
+            {
+              "id": "explosive",
+              "label": "爆炸弹",
+              "rewardLabel": "爆炸弹 +1",
+              "short": "B",
+              "color": "coral",
+              "cap": 2,
+              "description": "On first impact, splash radius 0.13/0.18 m at 50%/75% bullet damage; excludes direct target.",
+              "radiusByStack": [
+                0,
+                0.13,
+                0.18
+              ],
+              "damageRatioByStack": [
+                0,
+                0.5,
+                0.75
+              ]
+            },
+            {
+              "id": "speed",
+              "label": "攻速",
+              "rewardLabel": "攻速 +1",
+              "short": "F",
+              "color": "sun",
+              "cap": 3,
+              "description": "Fire cadence x1.25 per stack, capped at 8 volleys/sec; forward speed is unchanged."
+            },
+            {
+              "id": "shield",
+              "label": "护盾",
+              "rewardLabel": "护盾 +1",
+              "short": "D",
+              "color": "sky",
+              "cap": 3,
+              "description": "One charge cancels one collision completely, then consumes one charge. Shield does not absorb missed finish targets."
+            },
+            {
+              "id": "heal",
+              "label": "回血",
+              "rewardLabel": "回血 +25",
+              "short": "H",
+              "color": "mint",
+              "cap": null,
+              "amount": 25,
+              "description": "Immediate +25 HP, capped at 100. Healing is not a persistent weapon stack."
+            }
+          ],
+          "collection": "All SupplyCrates, including speed and shield, have 40 durability and can be shot or damaged by splash. Destroying one grants its reward immediately. An unbroken crate can still be collected on lane overlap at runner depth. Damage resolves before contact and each id grants exactly once.",
+          "durabilityHp": 40,
+          "feedbackSeconds": 1.4,
+          "feedbackFormat": "{reward} / {stack}",
+          "weaponVisibility": "spread adds lateral muzzle pods, pierce purple barrel collar, blast coral muzzle ring, rate pulsing yellow coil, shield blue orbital arc; heal mint pulse"
+        },
+        "animation": {
+          "running": {
+            "cycleSeconds": 0.48,
+            "hipSwingDegrees": 28,
+            "phaseLeft": 0,
+            "phaseRight": 3.141592653589793,
+            "torsoBobM": 0.0063,
+            "leanDegrees": 6,
+            "forwardDrift": "avatar moves forward by 0.035 m during first 3 s then maintains moving foot/track-relative travel; root remains stable",
+            "feet": "separate leg nodes parented to hip pivots, opposite swing; no requirement for unverified rigged skeleton"
+          },
+          "firing": {
+            "recoilM": 0.009,
+            "recoilSeconds": 0.1,
+            "muzzleSeconds": 0.06
+          },
+          "hit": {
+            "durationSeconds": 0.24,
+            "rollDegrees": 10,
+            "flashSeconds": 0.08
+          },
+          "death": {
+            "durationSeconds": 0.7,
+            "fallDegrees": 80,
+            "dropM": 0.04,
+            "fireStopsImmediately": true
+          },
+          "enemy": {
+            "hoverAmplitudeM": 0.012,
+            "cycleSeconds": 1.1,
+            "hitSquash": 0.12,
+            "deathScaleSeconds": 0.35
+          },
+          "reducedMotion": {
+            "keepEssentialMovement": true,
+            "sceneryMultiplier": 0.45,
+            "particleMultiplier": 0.35,
+            "disableCameraShake": true,
+            "neverStaticAvatar": true
+          }
+        },
+        "scenery": {
+          "rootStable": true,
+          "road": "Editor primitives: rounded course slab, lane dash segments, rails, safety stripes",
+          "layers": [
+            {
+              "name": "near lamps and rail clips",
+              "offsetM": 0.47,
+              "speedRatio": 1,
+              "spacingM": 0.28
+            },
+            {
+              "name": "mid supply pylons and round shrubs",
+              "offsetM": 0.64,
+              "speedRatio": 0.72,
+              "spacingM": 0.46
+            },
+            {
+              "name": "far pods and arch silhouettes",
+              "offsetM": 0.86,
+              "speedRatio": 0.4,
+              "spacingM": 0.65
+            }
+          ],
+          "recycle": "pool segments beyond near edge; distance-driven negative depth translation; maintain deterministic seed",
+          "motion": "markings flow toward viewer, props scale through projection; never scroll AttachmentPanel or Stage root",
+          "extras": "small hover wagons, turning beacon caps, bobbing roadside pods; amplitude <=0.012 m; gameplay is primary",
+          "poolCaps": {
+            "scenery": 54,
+            "bullets": 96,
+            "enemies": 18,
+            "gates": 10,
+            "crates": 10,
+            "particles": 160
+          }
+        },
+        "effects": {
+          "gate": {
+            "shape": "bounded rounded chips + ring",
+            "count": 18,
+            "lifetimeSeconds": 0.5,
+            "radiusM": 0.09,
+            "color": "sun"
+          },
+          "enemy": {
+            "shape": "coral chunks + cream puff ring, no gore",
+            "count": 14,
+            "lifetimeSeconds": 0.45,
+            "radiusM": 0.075,
+            "color": "coral"
+          },
+          "blast": {
+            "shape": "coral expanding ring",
+            "count": 8,
+            "lifetimeSeconds": 0.25,
+            "radiusM": 0.18,
+            "color": "coral"
+          },
+          "heal": {
+            "shape": "mint rising capsules",
+            "count": 8,
+            "lifetimeSeconds": 0.45,
+            "radiusM": 0.06,
+            "color": "mint"
+          },
+          "shield": {
+            "shape": "sky protective ring",
+            "count": 8,
+            "lifetimeSeconds": 0.35,
+            "radiusM": 0.08,
+            "color": "sky"
+          },
+          "impact": {
+            "shape": "tiny cream spark",
+            "count": 3,
+            "lifetimeSeconds": 0.15,
+            "radiusM": 0.025,
+            "color": "cream"
+          },
+          "motion": "no camera shake, no fullscreen flashes; effects bounded to contact point; preserve target readability",
+          "implementation": "Editor effect templates + bounded pooled runtime transforms; real animation and particle evidence required from parent"
+        },
+        "assets": {
+          "plan": [
+            {
+              "name": "RunnerTorso",
+              "id": "runner-torso",
+              "sizeM": [
+                0.12,
+                0.14,
+                0.09
+              ],
+              "pivot": "lower torso/hip root",
+              "prompt": "One separable toy sci-fi runner torso with integrated rounded helmet, arms in forward blaster-holding pose, cyan suit, navy visor, small cream joints. Bright matte plastic, roughness 0.72, minimal emission, no legs, no pedestal, no weapon, no text, clean single silhouette.",
+              "status": "parent_reported_full_body_candidate_requires_correction",
+              "required": true,
+              "owner": "parent_editor_asset_work",
+              "maxTriangles": 12000,
+              "textureMaxPx": 1024,
+              "material": {
+                "roughness": 0.72,
+                "metalness": 0.05
+              },
+              "acceptance": [
+                "single separated object",
+                "correct silhouette at gameplay distance",
+                "dimensions measured after import",
+                "pivot and axes verified",
+                "no baked text or pedestal",
+                "palette matches kit",
+                "parent review required before runtime binding"
+              ]
+            },
+            {
+              "name": "RunnerLeg",
+              "id": "runner-leg",
+              "sizeM": [
+                0.043,
+                0.095,
+                0.055
+              ],
+              "pivot": "top hip, +Y up",
+              "prompt": "One single separable toy robot leg from hip to oversized rounded boot. Cyan thigh, cream knee, navy boot sole; same rounded matte plastic sci-fi kit. Neutral down pose, no body, no second leg, no pedestal, no text. Reused left and right, rotate around hip for gait.",
+              "status": "parent_owned_generation_acceptance_pending",
+              "required": true,
+              "owner": "parent_editor_asset_work",
+              "maxTriangles": 12000,
+              "textureMaxPx": 1024,
+              "material": {
+                "roughness": 0.72,
+                "metalness": 0.05
+              },
+              "acceptance": [
+                "single separated object",
+                "correct silhouette at gameplay distance",
+                "dimensions measured after import",
+                "pivot and axes verified",
+                "no baked text or pedestal",
+                "palette matches kit",
+                "parent review required before runtime binding"
+              ]
+            },
+            {
+              "name": "Blaster",
+              "id": "blaster",
+              "sizeM": [
+                0.07,
+                0.055,
+                0.105
+              ],
+              "pivot": "rear grip",
+              "prompt": "One compact chunky toy sci-fi blaster, cream shell, navy grip, yellow circular muzzle, cyan barrel accents, rounded matte plastic. No character, no text, no base; forward axis -Z after parent acceptance. Readable modular muzzle attachment.",
+              "status": "parent_owned_generation_acceptance_pending",
+              "required": true,
+              "owner": "parent_editor_asset_work",
+              "maxTriangles": 12000,
+              "textureMaxPx": 1024,
+              "material": {
+                "roughness": 0.72,
+                "metalness": 0.05
+              },
+              "acceptance": [
+                "single separated object",
+                "correct silhouette at gameplay distance",
+                "dimensions measured after import",
+                "pivot and axes verified",
+                "no baked text or pedestal",
+                "palette matches kit",
+                "parent review required before runtime binding"
+              ]
+            },
+            {
+              "name": "GateFrame",
+              "id": "gate-frame",
+              "sizeM": [
+                0.2,
+                0.27,
+                0.045
+              ],
+              "pivot": "bottom centre",
+              "prompt": "One open toy sci-fi gate frame, two rounded yellow posts and rounded top bar, navy small joints, matte plastic. Empty centre for runtime durability and reward labels. No baked numbers, text, solid centre plate, floor, or pedestal.",
+              "status": "parent_owned_generation_acceptance_pending",
+              "required": true,
+              "owner": "parent_editor_asset_work",
+              "maxTriangles": 12000,
+              "textureMaxPx": 1024,
+              "material": {
+                "roughness": 0.72,
+                "metalness": 0.05
+              },
+              "acceptance": [
+                "single separated object",
+                "correct silhouette at gameplay distance",
+                "dimensions measured after import",
+                "pivot and axes verified",
+                "no baked text or pedestal",
+                "palette matches kit",
+                "parent review required before runtime binding"
+              ]
+            },
+            {
+              "name": "HoverEnemy",
+              "id": "hover-enemy",
+              "sizeM": [
+                0.13,
+                0.14,
+                0.12
+              ],
+              "pivot": "bottom centre",
+              "prompt": "One friendly-looking hostile toy sci-fi hover drone with chunky rounded coral body, dark navy single-eye visor, cream fins, small yellow jets. Matte plastic, clean separable object, no text/base/particles. Same shape reused with armour shell and larger boss attachments built as Editor primitives.",
+              "status": "parent_owned_generation_acceptance_pending",
+              "required": true,
+              "owner": "parent_editor_asset_work",
+              "maxTriangles": 12000,
+              "textureMaxPx": 1024,
+              "material": {
+                "roughness": 0.72,
+                "metalness": 0.05
+              },
+              "acceptance": [
+                "single separated object",
+                "correct silhouette at gameplay distance",
+                "dimensions measured after import",
+                "pivot and axes verified",
+                "no baked text or pedestal",
+                "palette matches kit",
+                "parent review required before runtime binding"
+              ]
+            },
+            {
+              "name": "SupplyCrate",
+              "id": "supply-crate",
+              "sizeM": [
+                0.105,
+                0.105,
+                0.1
+              ],
+              "pivot": "bottom centre",
+              "prompt": "One rounded toy sci-fi supply crate, cream matte plastic shell, mint inset panels, navy small latch. Empty square emblem area for runtime type marking, no baked text, no pedestal. Same palette and bevel language as runner and gate.",
+              "status": "parent_owned_generation_acceptance_pending",
+              "required": true,
+              "owner": "parent_editor_asset_work",
+              "maxTriangles": 12000,
+              "textureMaxPx": 1024,
+              "material": {
+                "roughness": 0.72,
+                "metalness": 0.05
+              },
+              "acceptance": [
+                "single separated object",
+                "correct silhouette at gameplay distance",
+                "dimensions measured after import",
+                "pivot and axes verified",
+                "no baked text or pedestal",
+                "palette matches kit",
+                "parent review required before runtime binding"
+              ]
+            },
+            {
+              "name": "Lamp",
+              "id": "lamp",
+              "sizeM": [
+                0.05,
+                0.25,
+                0.065
+              ],
+              "pivot": "bottom centre",
+              "prompt": "One rounded toy sci-fi roadside lamp, cream matte stem, cyan hood, tiny yellow light inset. Low emission, no baked glow or background, no base platform. Unified bright rounded toy kit.",
+              "status": "parent_owned_generation_acceptance_pending",
+              "required": true,
+              "owner": "parent_editor_asset_work",
+              "maxTriangles": 12000,
+              "textureMaxPx": 1024,
+              "material": {
+                "roughness": 0.72,
+                "metalness": 0.05
+              },
+              "acceptance": [
+                "single separated object",
+                "correct silhouette at gameplay distance",
+                "dimensions measured after import",
+                "pivot and axes verified",
+                "no baked text or pedestal",
+                "palette matches kit",
+                "parent review required before runtime binding"
+              ]
+            }
+          ],
+          "editorPrimitives": [
+            "Course",
+            "Rails",
+            "LaneDash",
+            "RailClip",
+            "Pylon",
+            "ShrubSphere",
+            "FarPod",
+            "Obstacle",
+            "ArmourShell",
+            "BossCore",
+            "MuzzleFlash",
+            "GateShatterTemplate",
+            "EnemyDeathTemplate",
+            "PickupPulseTemplate",
+            "BulletCapsule",
+            "ShieldArc"
+          ],
+          "loadPolicy": "all seven required models must be ready before Start enabled; failed required model => load-error with Retry assets and Exit only, never Continue with placeholder",
+          "optionalPolicy": "missing audio uses visual feedback + fallback notice; never blocks play",
+          "previewPolicy": "procedural Canvas geometry is schematic design representation, not generated model proof; no asset URL fetch in offline preview",
+          "previewLoadDelayMs": 350
+        },
+        "review": {
+          "status": "web_review_passed",
+          "originality": "three provided independent explorations compared; no new subagent claim",
+          "rulesPersisted": true,
+          "deviceComfort": false,
+          "editorAcceptance": false,
+          "checks": [
+            "schema and references valid",
+            "exact embedded JSON and vendored bundle",
+            "real pointer dragging retains lane",
+            "pause and confirmation paths",
+            "five simulated 60-second course victories",
+            "minimum preview has no document overflow",
+            "Chinese product labels, title, rewards, rules and buttons verified after localization"
+          ],
+          "lifecycleEvidence": "Declared pause event test hook; natural headless tab visibility remains unverified",
+          "typeWarning": "headlineLarge 24sp retained for durability numbers only, rationale in design-doc.md",
+          "uiLanguage": "zh-CN"
+        },
+        "labels": {
+          "durability": "耐久",
+          "damage": "受击",
+          "boss": "核心",
+          "max": "已满级",
+          "hp": "生命",
+          "noUpgrades": "尚未获得道具",
+          "auto": "自动前进 / 自动开火",
+          "drag": "按住小人左右拖动，松手后保留位置。",
+          "idleHint": "选择路线，小人会自动前进并开火。",
+          "loading": "正在准备玩具模型",
+          "fallback": "音效暂不可用，视觉反馈正常。",
+          "failure": "小人倒下了",
+          "missed": "终点目标未击破",
+          "victory": "关卡完成",
+          "completion": "五个关卡全部完成",
+          "rewardFormat": "{reward}",
+          "upgradeFormat": "{label} {stack}",
+          "timeFormat": "{seconds}秒",
+          "hpFormat": "生命 {hp} / 100",
+          "levelFormat": "{title}",
+          "resultFormat": "破门 {gates} / 击败敌人 {enemies} / 道具 {pickups}",
+          "remainingFormat": "剩余 {seconds}秒",
+          "runTitle": "火力冲门",
+          "startSubtitle": "击破数字门，叠加火力，持续向前。",
+          "rulesTitle": "玩法说明",
+          "rulesCopy": "按住小人左右拖动，松手保留位置。小人自动前进、自动开火。数字是剩余耐久；门打到零立即获得标明的奖励，碰到未破的门会受伤且没有奖励。攻速、护盾等补给箱可打碎立即获得，也能经过拾取，同一箱只奖励一次。散射、穿透、爆炸弹和攻速可叠加组合；护盾抵消一次碰撞，回血恢复25点生命。躲开敌人和路障，在60秒内击破终点目标。每关开始时生命和道具重置。",
+          "exitCopy": "本次挑战已结束，准备好后再出发。",
+          "loadErrorCopy": "必需模型加载失败。请重试模型或退出；模型就绪前不能开始游戏。"
+        },
+        "preview": {
+          "viewport": {
+            "default": {
+              "width": 1088,
+              "height": 620
+            },
+            "min": {
+              "width": 600,
+              "height": 480
+            },
+            "max": {
+              "width": 1360,
+              "height": 800
+            }
+          },
+          "camera": {
+            "eye": [
+              0,
+              1.25,
+              -0.6
+            ],
+            "target": [
+              0,
+              0.8,
+              0.9
+            ],
+            "focalRatio": 0.72,
+            "originYRatio": 0.4
+          },
+          "roadThicknessM": 0.035,
+          "roadColor": "cream",
+          "roadTopColor": "road",
+          "railColor": "sky",
+          "markingColor": "cream",
+          "shadowColor": "ink",
+          "shadowOpacity": 0.12,
+          "runnerColor": "sky",
+          "enemyColor": "coral",
+          "gateColor": "sun",
+          "obstacleColor": "sun",
+          "textColor": "ink",
+          "numberTypography": "headlineLarge",
+          "labelTypography": "bodySmall",
+          "sceneryColors": [
+            "mint",
+            "sky",
+            "violet"
+          ],
+          "bootColor": "ink",
+          "panelGapDp": 16,
+          "environmentMarginDp": 24,
+          "modelRendering": "procedural_geometry_design_only",
+          "testHooks": "non-visible window.designReview: dataCase, advance, snapshot, systemPause (declared lifecycle event simulation); no product debug controls",
+          "projection": "perspective schematic, not physical acceptance",
+          "shapeRoundRatio": 0.22,
+          "sideShade": 0.82,
+          "topShade": 1.08,
+          "readyObjects": [
+            {
+              "kind": "gate",
+              "x": 0,
+              "hp": 24,
+              "reward": "spread",
+              "d": 0.93
+            },
+            {
+              "kind": "enemy",
+              "x": 0.23,
+              "hp": 40,
+              "d": 1.5
+            },
+            {
+              "kind": "crate",
+              "x": -0.23,
+              "reward": "shield",
+              "d": 1.2
+            }
+          ],
+          "numberOffsetM": 0.185,
+          "rewardOffsetM": 0.08,
+          "labelOffsetM": 0.26,
+          "textScaleMin": 1,
+          "textScaleMax": 1.35,
+          "labelBillboardScale": 0.7,
+          "deathDisplaySeconds": 0.7,
+          "feedbackMinimumHeightDp": 18,
+          "runnerView": "rear_third_person",
+          "backpackColor": "cream",
+          "primitives": {
+            "rail": [
+              0.025,
+              0.035,
+              0.18
+            ],
+            "dash": [
+              0.012,
+              0.003,
+              0.12
+            ],
+            "pylon": [
+              0.075,
+              0.12,
+              0.075
+            ],
+            "pod": [
+              0.12,
+              0.1,
+              0.16
+            ],
+            "shrub": [
+              0.075,
+              0.1,
+              0.075
+            ],
+            "obstacle": [
+              0.15,
+              0.13,
+              0.12
+            ],
+            "gatePost": [
+              0.027,
+              0.27,
+              0.045
+            ],
+            "gateBar": [
+              0.2,
+              0.032,
+              0.045
+            ],
+            "gateLabelPlate": [
+              0.165,
+              0.1,
+              0.008
+            ],
+            "gateRewardPlate": [
+              0.165,
+              0.038,
+              0.008
+            ],
+            "muzzlePod": [
+              0.024,
+              0.028,
+              0.07
+            ],
+            "collar": [
+              0.048,
+              0.036,
+              0.028
+            ],
+            "core": [
+              0.24,
+              0.24,
+              0.18
+            ],
+            "bossShell": [
+              0.36,
+              0.27,
+              0.2
+            ],
+            "visor": [
+              0.075,
+              0.036,
+              0.008
+            ],
+            "backpack": [
+              0.065,
+              0.05,
+              0.015
+            ],
+            "helmetStripe": [
+              0.015,
+              0.052,
+              0.008
+            ],
+            "runnerHead": [
+              0.095,
+              0.08,
+              0.075
+            ],
+            "runnerBody": [
+              0.1,
+              0.072,
+              0.065
+            ],
+            "boot": [
+              0.048,
+              0.03,
+              0.065
+            ],
+            "bullet": [
+              0.012,
+              0.012,
+              0.04
+            ],
+            "lampCap": [
+              0.065,
+              0.035,
+              0.045
+            ],
+            "railClip": [
+              0.045,
+              0.035,
+              0.05
+            ]
+          },
+          "assembly": {
+            "runnerBodyY": 0.125,
+            "runnerHeadY": 0.198,
+            "hipY": 0.105,
+            "legX": 0.03,
+            "visorY": 0.2,
+            "visorD": 0.037,
+            "backpackD": -0.04,
+            "blasterY": 0.12,
+            "blasterD": 0.09,
+            "gatePlateY": 0.175,
+            "rewardPlateY": 0.085,
+            "enemyY": 0.1,
+            "crateY": 0.065,
+            "armourScale": 1.16
+          },
+          "motionDisplay": {
+            "readyTime": 0,
+            "deathFallAxis": "Z",
+            "hitSquashSeconds": 0.16
+          }
+        },
+        "levels": [
+          {
+            "id": "first-break",
+            "title": "01 / 首次破门",
+            "goal": "抓住小人，击破第一扇门，获得散射。",
+            "durationSeconds": 60,
+            "terminalHp": 64,
+            "events": [
+              {
+                "at": 0,
+                "kind": "gate",
+                "x": 0,
+                "hp": 24,
+                "reward": "spread"
+              },
+              {
+                "at": 5,
+                "kind": "crate",
+                "x": -0.23,
+                "hp": 0,
+                "reward": "shield"
+              },
+              {
+                "at": 9,
+                "kind": "enemy",
+                "x": 0,
+                "hp": 24,
+                "reward": null
+              },
+              {
+                "at": 14,
+                "kind": "gate",
+                "x": 0.23,
+                "hp": 40,
+                "reward": "speed"
+              },
+              {
+                "at": 20,
+                "kind": "crate",
+                "x": 0,
+                "hp": 0,
+                "reward": "heal"
+              },
+              {
+                "at": 24,
+                "kind": "enemy",
+                "x": -0.23,
+                "hp": 40,
+                "reward": null
+              },
+              {
+                "at": 29,
+                "kind": "gate",
+                "x": 0,
+                "hp": 48,
+                "reward": "pierce"
+              },
+              {
+                "at": 34,
+                "kind": "enemy",
+                "x": 0.23,
+                "hp": 48,
+                "reward": null
+              },
+              {
+                "at": 38,
+                "kind": "crate",
+                "x": 0,
+                "hp": 0,
+                "reward": "shield"
+              },
+              {
+                "at": 43,
+                "kind": "enemy",
+                "x": 0,
+                "hp": 56,
+                "reward": null
+              },
+              {
+                "at": 48,
+                "kind": "enemy",
+                "x": 0,
+                "hp": 64,
+                "reward": null,
+                "terminal": true
+              }
+            ]
+          },
+          {
+            "id": "forked-fire",
+            "title": "02 / 火力岔路",
+            "goal": "选择奖励路线，组合散射与穿透。",
+            "durationSeconds": 60,
+            "terminalHp": 112,
+            "events": [
+              {
+                "at": 0,
+                "kind": "gate",
+                "x": -0.23,
+                "hp": 32,
+                "reward": "spread"
+              },
+              {
+                "at": 0,
+                "kind": "gate",
+                "x": 0.23,
+                "hp": 32,
+                "reward": "pierce"
+              },
+              {
+                "at": 5,
+                "kind": "crate",
+                "x": 0,
+                "hp": 0,
+                "reward": "speed"
+              },
+              {
+                "at": 10,
+                "kind": "enemy",
+                "x": -0.23,
+                "hp": 56,
+                "reward": null
+              },
+              {
+                "at": 10,
+                "kind": "enemy",
+                "x": 0.23,
+                "hp": 56,
+                "reward": null
+              },
+              {
+                "at": 15,
+                "kind": "gate",
+                "x": 0,
+                "hp": 64,
+                "reward": "explosive"
+              },
+              {
+                "at": 21,
+                "kind": "crate",
+                "x": -0.23,
+                "hp": 0,
+                "reward": "heal"
+              },
+              {
+                "at": 25,
+                "kind": "enemy",
+                "x": 0,
+                "hp": 88,
+                "reward": null
+              },
+              {
+                "at": 30,
+                "kind": "gate",
+                "x": 0.23,
+                "hp": 80,
+                "reward": "spread"
+              },
+              {
+                "at": 36,
+                "kind": "crate",
+                "x": 0,
+                "hp": 0,
+                "reward": "shield"
+              },
+              {
+                "at": 40,
+                "kind": "enemy",
+                "x": -0.23,
+                "hp": 96,
+                "reward": null
+              },
+              {
+                "at": 48,
+                "kind": "enemy",
+                "x": 0,
+                "hp": 112,
+                "reward": null,
+                "terminal": true
+              }
+            ]
+          },
+          {
+            "id": "moving-hazard",
+            "title": "03 / 机动避障",
+            "goal": "保留拖动位置，躲开路障与快敌。",
+            "durationSeconds": 60,
+            "terminalHp": 144,
+            "events": [
+              {
+                "at": 0,
+                "kind": "gate",
+                "x": 0,
+                "hp": 40,
+                "reward": "speed"
+              },
+              {
+                "at": 4,
+                "kind": "crate",
+                "x": -0.23,
+                "hp": 0,
+                "reward": "shield"
+              },
+              {
+                "at": 8,
+                "kind": "obstacle",
+                "x": 0,
+                "hp": 0,
+                "reward": null
+              },
+              {
+                "at": 12,
+                "kind": "enemy",
+                "x": 0.23,
+                "hp": 64,
+                "reward": null,
+                "speedMultiplier": 1.3
+              },
+              {
+                "at": 16,
+                "kind": "gate",
+                "x": -0.23,
+                "hp": 64,
+                "reward": "spread"
+              },
+              {
+                "at": 22,
+                "kind": "obstacle",
+                "x": 0.23,
+                "hp": 0,
+                "reward": null
+              },
+              {
+                "at": 24,
+                "kind": "crate",
+                "x": 0,
+                "hp": 0,
+                "reward": "heal"
+              },
+              {
+                "at": 28,
+                "kind": "enemy",
+                "x": -0.23,
+                "hp": 80,
+                "reward": null,
+                "speedMultiplier": 1.3
+              },
+              {
+                "at": 32,
+                "kind": "gate",
+                "x": 0,
+                "hp": 88,
+                "reward": "explosive"
+              },
+              {
+                "at": 38,
+                "kind": "obstacle",
+                "x": -0.23,
+                "hp": 0,
+                "reward": null
+              },
+              {
+                "at": 41,
+                "kind": "crate",
+                "x": 0,
+                "hp": 0,
+                "reward": "pierce"
+              },
+              {
+                "at": 48,
+                "kind": "enemy",
+                "x": 0,
+                "hp": 144,
+                "reward": null,
+                "terminal": true
+              }
+            ]
+          },
+          {
+            "id": "armour-line",
+            "title": "04 / 装甲突破",
+            "goal": "用穿透突破装甲，用爆炸弹清理敌群。",
+            "durationSeconds": 60,
+            "terminalHp": 192,
+            "events": [
+              {
+                "at": 0,
+                "kind": "gate",
+                "x": 0,
+                "hp": 48,
+                "reward": "pierce"
+              },
+              {
+                "at": 4,
+                "kind": "gate",
+                "x": 0.23,
+                "hp": 56,
+                "reward": "speed"
+              },
+              {
+                "at": 8,
+                "kind": "crate",
+                "x": 0,
+                "hp": 0,
+                "reward": "explosive"
+              },
+              {
+                "at": 12,
+                "kind": "enemy",
+                "x": -0.23,
+                "hp": 88,
+                "reward": null,
+                "armoured": true
+              },
+              {
+                "at": 12,
+                "kind": "enemy",
+                "x": 0,
+                "hp": 88,
+                "reward": null,
+                "armoured": true
+              },
+              {
+                "at": 18,
+                "kind": "gate",
+                "x": 0,
+                "hp": 88,
+                "reward": "spread"
+              },
+              {
+                "at": 22,
+                "kind": "crate",
+                "x": -0.23,
+                "hp": 0,
+                "reward": "heal"
+              },
+              {
+                "at": 26,
+                "kind": "enemy",
+                "x": 0.23,
+                "hp": 112,
+                "reward": null,
+                "armoured": true
+              },
+              {
+                "at": 30,
+                "kind": "gate",
+                "x": -0.23,
+                "hp": 96,
+                "reward": "pierce"
+              },
+              {
+                "at": 35,
+                "kind": "crate",
+                "x": 0,
+                "hp": 0,
+                "reward": "shield"
+              },
+              {
+                "at": 40,
+                "kind": "obstacle",
+                "x": 0,
+                "hp": 0,
+                "reward": null
+              },
+              {
+                "at": 48,
+                "kind": "enemy",
+                "x": 0,
+                "hp": 192,
+                "reward": null,
+                "terminal": true,
+                "armoured": true
+              }
+            ]
+          },
+          {
+            "id": "core-breaker",
+            "title": "05 / 核心决战",
+            "goal": "叠加火力，躲开预警路线，击破机械核心。",
+            "durationSeconds": 60,
+            "terminalHp": 1280,
+            "events": [
+              {
+                "at": 0,
+                "kind": "gate",
+                "x": 0,
+                "hp": 40,
+                "reward": "spread"
+              },
+              {
+                "at": 4,
+                "kind": "crate",
+                "x": 0,
+                "hp": 0,
+                "reward": "speed"
+              },
+              {
+                "at": 8,
+                "kind": "gate",
+                "x": -0.23,
+                "hp": 48,
+                "reward": "pierce"
+              },
+              {
+                "at": 12,
+                "kind": "crate",
+                "x": 0,
+                "hp": 0,
+                "reward": "explosive"
+              },
+              {
+                "at": 16,
+                "kind": "enemy",
+                "x": 0.23,
+                "hp": 96,
+                "reward": null
+              },
+              {
+                "at": 20,
+                "kind": "gate",
+                "x": 0,
+                "hp": 72,
+                "reward": "speed"
+              },
+              {
+                "at": 24,
+                "kind": "crate",
+                "x": -0.23,
+                "hp": 0,
+                "reward": "shield"
+              },
+              {
+                "at": 28,
+                "kind": "crate",
+                "x": 0,
+                "hp": 0,
+                "reward": "heal"
+              },
+              {
+                "at": 32,
+                "kind": "gate",
+                "x": 0.23,
+                "hp": 96,
+                "reward": "explosive"
+              },
+              {
+                "at": 36,
+                "kind": "enemy",
+                "x": 0,
+                "hp": 104,
+                "reward": null,
+                "armoured": true
+              },
+              {
+                "at": 44,
+                "kind": "enemy",
+                "x": 0,
+                "hp": 1280,
+                "reward": null,
+                "terminal": true,
+                "boss": true
+              }
+            ]
+          }
+        ],
+        "uiLanguage": "zh-CN"
+      },
+      "bindings": {
+        "level": "game.level",
+        "hp": "game.hp",
+        "upgrades": "game.upgrades",
+        "elapsed": "game.elapsed",
+        "models": "assets.required",
+        "audio": "assets.audio"
+      },
+      "events": {
+        "avatar-drag": "drag",
+        "level-cleared": "clear",
+        "runner-failed": "fail",
+        "required-load-failed": "asset-fail",
+        "required-load-ready": "asset-ready",
+        "pause-request": "suspend"
+      },
+      "parts": {
+        "road": {
+          "appearance": {
+            "fill": "road"
+          }
+        },
+        "rail": {
+          "appearance": {
+            "fill": "sky"
+          }
+        },
+        "runner": {
+          "appearance": {
+            "fill": "sky"
+          },
+          "states": {
+            "hit": {
+              "fill": "cream"
+            },
+            "dead": {
+              "opacity": 0.55
+            }
+          }
+        },
+        "gate": {
+          "appearance": {
+            "fill": "sun"
+          },
+          "states": {
+            "breaking": {
+              "opacity": 0.7
+            }
+          }
+        },
+        "enemy": {
+          "appearance": {
+            "fill": "coral"
+          },
+          "states": {
+            "armoured": {
+              "fill": "sun"
+            }
+          }
+        },
+        "crate": {
+          "appearance": {
+            "fill": "mint"
+          }
+        },
+        "scenery": {
+          "appearance": {
+            "fill": "violet"
+          }
+        },
+        "bullet": {
+          "appearance": {
+            "fill": "sun"
+          }
+        },
+        "particle": {
+          "appearance": {
+            "fill": "cream"
+          }
+        },
+        "durabilityNumber": {
+          "appearance": {
+            "foreground": "ink"
+          }
+        },
+        "rewardLabel": {
+          "appearance": {
+            "foreground": "ink"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage-root",
+      "kind": "layout",
+      "layout": {
+        "mode": "column",
+        "gapDp": 0
+      },
+      "children": [
+        "course"
+      ]
+    },
+    {
+      "id": "ready",
+      "kind": "layout",
+      "layout": {
+        "mode": "column",
+        "gapDp": 8,
+        "paddingDp": 16,
+        "align": "center"
+      },
+      "children": [
+        "ready-title",
+        "ready-copy",
+        "level-title",
+        "optional-audio",
+        "ready-actions"
+      ]
+    },
+    {
+      "id": "ready-title",
+      "kind": "text",
+      "content": "火力冲门",
+      "textStyle": {
+        "typography": "headlineSmall",
+        "color": "labelPrimary"
+      }
+    },
+    {
+      "id": "ready-copy",
+      "kind": "text",
+      "content": "击破数字门，叠加火力，持续向前。",
+      "textStyle": {
+        "typography": "bodyMediumMultiline",
+        "color": "labelPrimary"
+      }
+    },
+    {
+      "id": "level-title",
+      "kind": "text",
+      "content": "",
+      "textStyle": {
+        "typography": "titleMedium",
+        "color": "labelPrimary"
+      },
+      "bindings": {
+        "content": "game.levelTitle"
+      }
+    },
+    {
+      "id": "optional-audio",
+      "kind": "text",
+      "content": "",
+      "textStyle": {
+        "typography": "bodySmall",
+        "color": "labelPrimary"
+      },
+      "bindings": {
+        "content": "assets.audioNotice"
+      },
+      "visibleInStates": [
+        "ready"
+      ]
+    },
+    {
+      "id": "ready-actions",
+      "kind": "layout",
+      "layout": {
+        "mode": "row",
+        "gapDp": 8,
+        "justify": "center"
+      },
+      "children": [
+        "start",
+        "rules-open",
+        "exit-ready"
+      ]
+    },
+    {
+      "id": "start",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "props": {
+        "size": "regular",
+        "text": "开始关卡",
+        "interactionTargetDp": 56
+      },
+      "layout": {
+        "mode": "row",
+        "minHeightDp": 56,
+        "minWidthDp": 104,
+        "align": "center",
+        "justify": "center"
+      },
+      "events": {
+        "click-action": "start"
+      }
+    },
+    {
+      "id": "rules-open",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "props": {
+        "size": "regular",
+        "text": "玩法",
+        "interactionTargetDp": 56
+      },
+      "layout": {
+        "mode": "row",
+        "minHeightDp": 56,
+        "minWidthDp": 104,
+        "align": "center",
+        "justify": "center"
+      },
+      "events": {
+        "click-action": "rules-open"
+      }
+    },
+    {
+      "id": "exit-ready",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "props": {
+        "size": "regular",
+        "text": "退出",
+        "interactionTargetDp": 56
+      },
+      "layout": {
+        "mode": "row",
+        "minHeightDp": 56,
+        "minWidthDp": 104,
+        "align": "center",
+        "justify": "center"
+      },
+      "events": {
+        "click-action": "exit-ready"
+      }
+    },
+    {
+      "id": "hud",
+      "kind": "layout",
+      "layout": {
+        "mode": "column",
+        "gapDp": 8,
+        "paddingDp": 16
+      },
+      "children": [
+        "hud-top",
+        "upgrade-line",
+        "feedback",
+        "drag-hint"
+      ]
+    },
+    {
+      "id": "hud-top",
+      "kind": "layout",
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "justify": "space-between"
+      },
+      "children": [
+        "hud-level",
+        "hud-health",
+        "hud-time",
+        "pause"
+      ]
+    },
+    {
+      "id": "hud-level",
+      "kind": "text",
+      "content": "",
+      "textStyle": {
+        "typography": "titleMedium",
+        "color": "labelPrimary"
+      },
+      "bindings": {
+        "content": "game.levelTitle"
+      }
+    },
+    {
+      "id": "hud-health",
+      "kind": "text",
+      "content": "",
+      "textStyle": {
+        "typography": "titleMedium",
+        "color": "labelPrimary"
+      },
+      "bindings": {
+        "content": "game.hpLabel"
+      }
+    },
+    {
+      "id": "hud-time",
+      "kind": "text",
+      "content": "",
+      "textStyle": {
+        "typography": "labelLarge",
+        "color": "labelPrimary"
+      },
+      "bindings": {
+        "content": "game.timeLabel"
+      }
+    },
+    {
+      "id": "pause",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "props": {
+        "size": "regular",
+        "text": "暂停",
+        "interactionTargetDp": 56
+      },
+      "layout": {
+        "mode": "row",
+        "minHeightDp": 56,
+        "minWidthDp": 104,
+        "align": "center",
+        "justify": "center"
+      },
+      "events": {
+        "click-action": "pause"
+      }
+    },
+    {
+      "id": "upgrade-line",
+      "kind": "text",
+      "content": "",
+      "textStyle": {
+        "typography": "bodySmall",
+        "color": "labelPrimary"
+      },
+      "bindings": {
+        "content": "game.upgradeLabel"
+      }
+    },
+    {
+      "id": "feedback",
+      "kind": "text",
+      "content": "",
+      "textStyle": {
+        "typography": "titleSmall",
+        "color": "labelPrimary"
+      },
+      "bindings": {
+        "content": "game.feedback"
+      },
+      "accessibilityLabel": "最新受击或道具反馈"
+    },
+    {
+      "id": "drag-hint",
+      "kind": "text",
+      "content": "按住小人左右拖动，松手后保留位置。",
+      "textStyle": {
+        "typography": "bodySmall",
+        "color": "labelPrimary"
+      }
+    },
+    {
+      "id": "paused",
+      "kind": "layout",
+      "layout": {
+        "mode": "column",
+        "gapDp": 8,
+        "paddingDp": 16,
+        "align": "center"
+      },
+      "children": [
+        "pause-title",
+        "pause-copy",
+        "pause-actions"
+      ]
+    },
+    {
+      "id": "pause-title",
+      "kind": "text",
+      "content": "已暂停",
+      "textStyle": {
+        "typography": "headlineSmall",
+        "color": "labelPrimary"
+      }
+    },
+    {
+      "id": "pause-copy",
+      "kind": "text",
+      "content": "当前位置、生命和道具均已保留。",
+      "textStyle": {
+        "typography": "bodyMedium",
+        "color": "labelPrimary"
+      }
+    },
+    {
+      "id": "pause-actions",
+      "kind": "layout",
+      "layout": {
+        "mode": "row",
+        "gapDp": 8,
+        "justify": "center"
+      },
+      "children": [
+        "resume",
+        "rules-paused",
+        "restart",
+        "exit-paused"
+      ]
+    },
+    {
+      "id": "resume",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "props": {
+        "size": "regular",
+        "text": "继续",
+        "interactionTargetDp": 56
+      },
+      "layout": {
+        "mode": "row",
+        "minHeightDp": 56,
+        "minWidthDp": 104,
+        "align": "center",
+        "justify": "center"
+      },
+      "events": {
+        "click-action": "resume"
+      }
+    },
+    {
+      "id": "rules-paused",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "props": {
+        "size": "regular",
+        "text": "玩法",
+        "interactionTargetDp": 56
+      },
+      "layout": {
+        "mode": "row",
+        "minHeightDp": 56,
+        "minWidthDp": 104,
+        "align": "center",
+        "justify": "center"
+      },
+      "events": {
+        "click-action": "rules-paused"
+      }
+    },
+    {
+      "id": "restart",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "props": {
+        "size": "regular",
+        "text": "重新开始",
+        "interactionTargetDp": 56
+      },
+      "layout": {
+        "mode": "row",
+        "minHeightDp": 56,
+        "minWidthDp": 104,
+        "align": "center",
+        "justify": "center"
+      },
+      "events": {
+        "click-action": "restart"
+      }
+    },
+    {
+      "id": "exit-paused",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "props": {
+        "size": "regular",
+        "text": "退出",
+        "interactionTargetDp": 56
+      },
+      "layout": {
+        "mode": "row",
+        "minHeightDp": 56,
+        "minWidthDp": 104,
+        "align": "center",
+        "justify": "center"
+      },
+      "events": {
+        "click-action": "exit-paused"
+      }
+    },
+    {
+      "id": "failed",
+      "kind": "layout",
+      "layout": {
+        "mode": "column",
+        "gapDp": 8,
+        "paddingDp": 16,
+        "align": "center"
+      },
+      "children": [
+        "fail-title",
+        "result-copy",
+        "fail-actions"
+      ]
+    },
+    {
+      "id": "fail-title",
+      "kind": "text",
+      "content": "",
+      "textStyle": {
+        "typography": "headlineSmall",
+        "color": "labelPrimary"
+      },
+      "bindings": {
+        "content": "game.failureTitle"
+      }
+    },
+    {
+      "id": "result-copy",
+      "kind": "text",
+      "content": "",
+      "textStyle": {
+        "typography": "bodyMedium",
+        "color": "labelPrimary"
+      },
+      "bindings": {
+        "content": "game.resultLabel"
+      }
+    },
+    {
+      "id": "fail-actions",
+      "kind": "layout",
+      "layout": {
+        "mode": "row",
+        "gapDp": 8,
+        "justify": "center"
+      },
+      "children": [
+        "retry",
+        "exit-failed"
+      ]
+    },
+    {
+      "id": "retry",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "props": {
+        "size": "regular",
+        "text": "重试本关",
+        "interactionTargetDp": 56
+      },
+      "layout": {
+        "mode": "row",
+        "minHeightDp": 56,
+        "minWidthDp": 104,
+        "align": "center",
+        "justify": "center"
+      },
+      "events": {
+        "click-action": "retry"
+      }
+    },
+    {
+      "id": "exit-failed",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "props": {
+        "size": "regular",
+        "text": "退出",
+        "interactionTargetDp": 56
+      },
+      "layout": {
+        "mode": "row",
+        "minHeightDp": 56,
+        "minWidthDp": 104,
+        "align": "center",
+        "justify": "center"
+      },
+      "events": {
+        "click-action": "exit-failed"
+      }
+    },
+    {
+      "id": "won",
+      "kind": "layout",
+      "layout": {
+        "mode": "column",
+        "gapDp": 8,
+        "paddingDp": 16,
+        "align": "center"
+      },
+      "children": [
+        "won-title",
+        "won-copy",
+        "won-actions"
+      ]
+    },
+    {
+      "id": "won-title",
+      "kind": "text",
+      "content": "关卡完成",
+      "textStyle": {
+        "typography": "headlineSmall",
+        "color": "labelPrimary"
+      }
+    },
+    {
+      "id": "won-copy",
+      "kind": "text",
+      "content": "",
+      "textStyle": {
+        "typography": "bodyMedium",
+        "color": "labelPrimary"
+      },
+      "bindings": {
+        "content": "game.resultLabel"
+      }
+    },
+    {
+      "id": "won-actions",
+      "kind": "layout",
+      "layout": {
+        "mode": "row",
+        "gapDp": 8,
+        "justify": "center"
+      },
+      "children": [
+        "next",
+        "exit-won"
+      ]
+    },
+    {
+      "id": "next",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "props": {
+        "size": "regular",
+        "text": "继续",
+        "interactionTargetDp": 56
+      },
+      "layout": {
+        "mode": "row",
+        "minHeightDp": 56,
+        "minWidthDp": 104,
+        "align": "center",
+        "justify": "center"
+      },
+      "events": {
+        "click-action": "next"
+      }
+    },
+    {
+      "id": "exit-won",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "props": {
+        "size": "regular",
+        "text": "退出",
+        "interactionTargetDp": 56
+      },
+      "layout": {
+        "mode": "row",
+        "minHeightDp": 56,
+        "minWidthDp": 104,
+        "align": "center",
+        "justify": "center"
+      },
+      "events": {
+        "click-action": "exit-won"
+      }
+    },
+    {
+      "id": "complete",
+      "kind": "layout",
+      "layout": {
+        "mode": "column",
+        "gapDp": 8,
+        "paddingDp": 16,
+        "align": "center"
+      },
+      "children": [
+        "complete-title",
+        "complete-copy",
+        "complete-actions"
+      ]
+    },
+    {
+      "id": "complete-title",
+      "kind": "text",
+      "content": "五个关卡全部完成",
+      "textStyle": {
+        "typography": "headlineSmall",
+        "color": "labelPrimary"
+      }
+    },
+    {
+      "id": "complete-copy",
+      "kind": "text",
+      "content": "五条路线，组合你的玩具火力。",
+      "textStyle": {
+        "typography": "bodyMedium",
+        "color": "labelPrimary"
+      }
+    },
+    {
+      "id": "complete-actions",
+      "kind": "layout",
+      "layout": {
+        "mode": "row",
+        "gapDp": 8,
+        "justify": "center"
+      },
+      "children": [
+        "play-again",
+        "exit-complete"
+      ]
+    },
+    {
+      "id": "play-again",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "props": {
+        "size": "regular",
+        "text": "重新挑战",
+        "interactionTargetDp": 56
+      },
+      "layout": {
+        "mode": "row",
+        "minHeightDp": 56,
+        "minWidthDp": 104,
+        "align": "center",
+        "justify": "center"
+      },
+      "events": {
+        "click-action": "play-again"
+      }
+    },
+    {
+      "id": "exit-complete",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "props": {
+        "size": "regular",
+        "text": "退出",
+        "interactionTargetDp": 56
+      },
+      "layout": {
+        "mode": "row",
+        "minHeightDp": 56,
+        "minWidthDp": 104,
+        "align": "center",
+        "justify": "center"
+      },
+      "events": {
+        "click-action": "exit-complete"
+      }
+    },
+    {
+      "id": "rules",
+      "kind": "layout",
+      "layout": {
+        "mode": "column",
+        "gapDp": 8,
+        "paddingDp": 16
+      },
+      "children": [
+        "rules-title",
+        "rules-copy",
+        "rules-back"
+      ]
+    },
+    {
+      "id": "rules-title",
+      "kind": "text",
+      "content": "玩法说明",
+      "textStyle": {
+        "typography": "headlineSmall",
+        "color": "labelPrimary"
+      }
+    },
+    {
+      "id": "rules-copy",
+      "kind": "text",
+      "content": "按住小人左右拖动，松手保留位置。小人自动前进、自动开火。数字是剩余耐久；门打到零立即获得标明的奖励，碰到未破的门会受伤且没有奖励。攻速、护盾等补给箱可打碎立即获得，也能经过拾取，同一箱只奖励一次。散射、穿透、爆炸弹和攻速可叠加组合；护盾抵消一次碰撞，回血恢复25点生命。躲开敌人和路障，在60秒内击破终点目标。每关开始时生命和道具重置。",
+      "textStyle": {
+        "typography": "bodySmall",
+        "color": "labelPrimary"
+      }
+    },
+    {
+      "id": "rules-back",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "props": {
+        "size": "regular",
+        "text": "返回",
+        "interactionTargetDp": 56
+      },
+      "layout": {
+        "mode": "row",
+        "minHeightDp": 56,
+        "minWidthDp": 104,
+        "align": "center",
+        "justify": "center"
+      },
+      "events": {
+        "click-action": "rules-back"
+      }
+    },
+    {
+      "id": "loading",
+      "kind": "layout",
+      "layout": {
+        "mode": "column",
+        "gapDp": 8,
+        "paddingDp": 24,
+        "align": "center"
+      },
+      "children": [
+        "loading-text",
+        "loading-progress"
+      ]
+    },
+    {
+      "id": "loading-text",
+      "kind": "text",
+      "content": "正在准备玩具模型",
+      "textStyle": {
+        "typography": "titleMedium",
+        "color": "labelPrimary"
+      }
+    },
+    {
+      "id": "loading-progress",
+      "kind": "spatialui",
+      "component": "sui-circular-progress",
+      "props": {
+        "size": "regular",
+        "indeterminate": true
+      },
+      "purpose": "Show required-model loading",
+      "bindings": {
+        "aria-label": "assets.loadingLabel"
+      }
+    },
+    {
+      "id": "load-error",
+      "kind": "layout",
+      "layout": {
+        "mode": "column",
+        "gapDp": 8,
+        "paddingDp": 16,
+        "align": "center"
+      },
+      "children": [
+        "load-error-title",
+        "load-error-message",
+        "load-error-actions"
+      ]
+    },
+    {
+      "id": "load-error-title",
+      "kind": "text",
+      "content": "模型暂不可用",
+      "textStyle": {
+        "typography": "headlineSmall",
+        "color": "labelPrimary"
+      }
+    },
+    {
+      "id": "load-error-message",
+      "kind": "text",
+      "content": "必需模型加载失败。请重试模型或退出；模型就绪前不能开始游戏。",
+      "textStyle": {
+        "typography": "bodySmall",
+        "color": "labelPrimary"
+      },
+      "bindings": {
+        "content": "assets.errorMessage"
+      }
+    },
+    {
+      "id": "load-error-actions",
+      "kind": "layout",
+      "layout": {
+        "mode": "row",
+        "gapDp": 8,
+        "justify": "center"
+      },
+      "children": [
+        "retry-assets",
+        "exit-load-error"
+      ]
+    },
+    {
+      "id": "retry-assets",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "props": {
+        "size": "regular",
+        "text": "重试模型",
+        "interactionTargetDp": 56
+      },
+      "layout": {
+        "mode": "row",
+        "minHeightDp": 56,
+        "minWidthDp": 104,
+        "align": "center",
+        "justify": "center"
+      },
+      "events": {
+        "click-action": "retry-assets"
+      }
+    },
+    {
+      "id": "exit-load-error",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "props": {
+        "size": "regular",
+        "text": "退出",
+        "interactionTargetDp": 56
+      },
+      "layout": {
+        "mode": "row",
+        "minHeightDp": 56,
+        "minWidthDp": 104,
+        "align": "center",
+        "justify": "center"
+      },
+      "events": {
+        "click-action": "exit-load-error"
+      }
+    },
+    {
+      "id": "exited",
+      "kind": "layout",
+      "layout": {
+        "mode": "column",
+        "gapDp": 8,
+        "paddingDp": 24,
+        "align": "center"
+      },
+      "children": [
+        "exit-text",
+        "return"
+      ]
+    },
+    {
+      "id": "exit-text",
+      "kind": "text",
+      "content": "本次挑战已结束，准备好后再出发。",
+      "textStyle": {
+        "typography": "bodyMediumMultiline",
+        "color": "labelPrimary"
+      }
+    },
+    {
+      "id": "return",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "props": {
+        "size": "regular",
+        "text": "返回开始",
+        "interactionTargetDp": 56
+      },
+      "layout": {
+        "mode": "row",
+        "minHeightDp": 56,
+        "minWidthDp": 104,
+        "align": "center",
+        "justify": "center"
+      },
+      "events": {
+        "click-action": "return"
+      }
+    },
+    {
+      "id": "confirm-dialog",
+      "kind": "spatialui",
+      "component": "sui-alert-dialog",
+      "props": {
+        "dismiss-on-escape": true,
+        "dismiss-on-click-outside": false
+      },
+      "children": [
+        "confirm-title",
+        "confirm-body",
+        "confirm-buttons"
+      ],
+      "events": {
+        "dismiss-request": "confirm-cancel"
+      }
+    },
+    {
+      "id": "confirm-title",
+      "kind": "text",
+      "content": "",
+      "textStyle": {
+        "typography": "titleMedium",
+        "color": "labelPrimary"
+      },
+      "props": {
+        "slot": "title"
+      },
+      "bindings": {
+        "content": "ui.confirmation.title"
+      }
+    },
+    {
+      "id": "confirm-body",
+      "kind": "text",
+      "content": "",
+      "textStyle": {
+        "typography": "bodyMediumMultiline",
+        "color": "labelPrimary"
+      },
+      "bindings": {
+        "content": "ui.confirmation.body"
+      }
+    },
+    {
+      "id": "confirm-buttons",
+      "kind": "layout",
+      "layout": {
+        "mode": "row",
+        "gapDp": 8
+      },
+      "children": [
+        "confirm-cancel",
+        "confirm-ok"
+      ],
+      "props": {
+        "slot": "buttons"
+      }
+    },
+    {
+      "id": "confirm-cancel",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "props": {
+        "size": "regular",
+        "text": "",
+        "interactionTargetDp": 56
+      },
+      "layout": {
+        "mode": "row",
+        "minHeightDp": 56,
+        "minWidthDp": 104,
+        "align": "center",
+        "justify": "center"
+      },
+      "events": {
+        "click-action": "confirm-cancel"
+      },
+      "bindings": {
+        "text": "ui.confirmation.cancelLabel"
+      }
+    },
+    {
+      "id": "confirm-ok",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "props": {
+        "size": "regular",
+        "text": "",
+        "interactionTargetDp": 56
+      },
+      "layout": {
+        "mode": "row",
+        "minHeightDp": 56,
+        "minWidthDp": 104,
+        "align": "center",
+        "justify": "center"
+      },
+      "events": {
+        "click-action": "confirm-ok"
+      },
+      "bindings": {
+        "text": "ui.confirmation.confirmLabel"
+      }
+    }
+  ],
+  "responsiveRules": [
+    {
+      "id": "attachment-compact",
+      "surfaceId": "attachment",
+      "when": {
+        "maxWidthDp": 640
+      },
+      "overrides": [
+        {
+          "nodeId": "hud-top",
+          "layout": {
+            "mode": "grid",
+            "columns": 2,
+            "gapDp": 8,
+            "align": "center"
+          }
+        },
+        {
+          "nodeId": "pause-actions",
+          "layout": {
+            "mode": "grid",
+            "columns": 2,
+            "gapDp": 8
+          }
+        },
+        {
+          "nodeId": "rules",
+          "layout": {
+            "mode": "column",
+            "paddingDp": 16,
+            "gapDp": 8,
+            "overflow": "scroll"
+          }
+        }
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "id": "runner-torso",
+      "kind": "model",
+      "src": "planned://spatial-editor/RunnerTorso",
+      "purpose": "One separable toy sci-fi runner torso with integrated rounded helmet, arms in forward blaster-holding pose, cyan suit, navy visor, small cream joints. Bright matte plastic, roughness 0.72, minimal emission, no legs, no pedestal, no weapon, no text, clean single silhouette.",
+      "alt": "RunnerTorso: planned, acceptance pending"
+    },
+    {
+      "id": "runner-leg",
+      "kind": "model",
+      "src": "planned://spatial-editor/RunnerLeg",
+      "purpose": "One single separable toy robot leg from hip to oversized rounded boot. Cyan thigh, cream knee, navy boot sole; same rounded matte plastic sci-fi kit. Neutral down pose, no body, no second leg, no pedestal, no text. Reused left and right, rotate around hip for gait.",
+      "alt": "RunnerLeg: planned, acceptance pending"
+    },
+    {
+      "id": "blaster",
+      "kind": "model",
+      "src": "planned://spatial-editor/Blaster",
+      "purpose": "One compact chunky toy sci-fi blaster, cream shell, navy grip, yellow circular muzzle, cyan barrel accents, rounded matte plastic. No character, no text, no base; forward axis -Z after parent acceptance. Readable modular muzzle attachment.",
+      "alt": "Blaster: planned, acceptance pending"
+    },
+    {
+      "id": "gate-frame",
+      "kind": "model",
+      "src": "planned://spatial-editor/GateFrame",
+      "purpose": "One open toy sci-fi gate frame, two rounded yellow posts and rounded top bar, navy small joints, matte plastic. Empty centre for runtime durability and reward labels. No baked numbers, text, solid centre plate, floor, or pedestal.",
+      "alt": "GateFrame: planned, acceptance pending"
+    },
+    {
+      "id": "hover-enemy",
+      "kind": "model",
+      "src": "planned://spatial-editor/HoverEnemy",
+      "purpose": "One friendly-looking hostile toy sci-fi hover drone with chunky rounded coral body, dark navy single-eye visor, cream fins, small yellow jets. Matte plastic, clean separable object, no text/base/particles. Same shape reused with armour shell and larger boss attachments built as Editor primitives.",
+      "alt": "HoverEnemy: planned, acceptance pending"
+    },
+    {
+      "id": "supply-crate",
+      "kind": "model",
+      "src": "planned://spatial-editor/SupplyCrate",
+      "purpose": "One rounded toy sci-fi supply crate, cream matte plastic shell, mint inset panels, navy small latch. Empty square emblem area for runtime type marking, no baked text, no pedestal. Same palette and bevel language as runner and gate.",
+      "alt": "SupplyCrate: planned, acceptance pending"
+    },
+    {
+      "id": "lamp",
+      "kind": "model",
+      "src": "planned://spatial-editor/Lamp",
+      "purpose": "One rounded toy sci-fi roadside lamp, cream matte stem, cyan hood, tiny yellow light inset. Low emission, no baked glow or background, no base platform. Unified bright rounded toy kit.",
+      "alt": "Lamp: planned, acceptance pending"
+    },
+    {
+      "id": "optional-audio",
+      "kind": "audio",
+      "src": "planned://local-synth/soft-toy-fx",
+      "purpose": "Optional non-verbal shot, break and pickup cues; visual fallback if unavailable."
+    }
+  ]
+}

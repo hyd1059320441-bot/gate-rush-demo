@@ -1,0 +1,32 @@
+{
+  "advisories": [
+    {
+      "evidence": "val digits:DurabilityDigits?,val labels:Map<Upgrade,Entity>,",
+      "file": "/Users/bytedance/Documents/ai/gate-rush-demo/app/src/main/java/com/example/gaterush/p7c91a3e2/scene/GateRushScene.kt",
+      "line": 30,
+      "rationale": "Foreground-facing details appear in a scene with depth transforms but no visible body/detail depth contract; review whether Z is being used only for front-view visibility.",
+      "rule": "surface-detail-depth-without-body-contract"
+    },
+    {
+      "evidence": "fun label(parent:Entity,key:String,y:Float,z:Float,width:Float=.16f):Entity {",
+      "file": "/Users/bytedance/Documents/ai/gate-rush-demo/app/src/main/java/com/example/gaterush/p7c91a3e2/scene/SceneResources.kt",
+      "line": 42,
+      "rationale": "Foreground-facing details appear in a scene with depth transforms but no visible body/detail depth contract; review whether Z is being used only for front-view visibility.",
+      "rule": "surface-detail-depth-without-body-contract"
+    }
+  ],
+  "kotlin_file_count": 3,
+  "passed": true,
+  "scan_inputs": [
+    "/Users/bytedance/Documents/ai/gate-rush-demo/app/src/main/java/com/example/gaterush/p7c91a3e2/scene"
+  ],
+  "schema_version": 3,
+  "signals": {
+    "BoundingBox": 0,
+    "convertPosition": 0,
+    "getVisualBounds": 5,
+    "materialResourceFactory": 3,
+    "meshResourceFactory": 3
+  },
+  "violations": []
+}

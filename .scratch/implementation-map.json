@@ -1,0 +1,20 @@
+{
+  "designRevision": 12,
+  "sceneEntry": "app/src/main/java/com/example/gaterush/p7c91a3e2/scene/GateRushScene.kt",
+  "uiEntry": "app/src/main/java/com/example/gaterush/p7c91a3e2/ui/game/GameScreen.kt",
+  "nativeComponents": ["PicoTheme", "Text", "Button", "LinearProgressIndicator"],
+  "nativeColorsPreserved": true,
+  "rootSurface": "DefaultStage Mixed; one AttachmentPanel; no app-authored root fill, material or border",
+  "states": {
+    "loading":"Phase.LOADING", "ready":"Phase.READY", "running":"Phase.RUNNING",
+    "paused":"Phase.PAUSED", "failed":"Phase.FAILED", "won":"Phase.WON",
+    "complete":"Phase.COMPLETE", "rules":"Phase.RULES", "load-error":"Phase.LOAD_ERROR",
+    "exited":"LocalSpatialNavigator.closeStage + Activity.finish"
+  },
+  "sceneHierarchy": "SpatialView -> placementOwner(identity) -> fittedSceneRoot(uniform 0.14 + physical placement) -> body/hips/weapon, pooled targets/bullets/effects, scenery",
+  "input": "SpatialView.pointerInput, TargetEntity.hit(AvatarDragTarget), captured incremental spatial drag; LocalDensity px -> dp -> LocalPhysicalLengthConverter Meters",
+  "rewardOwnership": "PlayGameUseCase grants exactly once; graphics cannot grant",
+  "labels": "Baked Chinese domain texture labels and dynamic pooled durability digits; single native HUD",
+  "surfaceReview": "Digits and named reward strips are protruding details on gate/enemy body faces, independent of overall body placement; source-gate advisories reviewed",
+  "visualReview": "Actual source model six views; headset composition and gesture comfort UNOBSERVED"
+}

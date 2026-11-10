@@ -1,0 +1,75 @@
+#usda 1.0
+(
+    customLayerData = {
+        string Copyright = "Copyright 2022 - 2024 PICO. All rights reserved."
+        string RuntimeVersion = "Runtime V6.3.0.0.mol.20261018"
+        string Version = "Spatial Editor V6.2.5"
+    }
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    def "Lamp" (
+        prepend references = @../AI-Asset/Lamp.usdz@
+    )
+    {
+    }
+
+    def "Blaster" (
+        prepend references = @../AI-Asset/Blaster.usdz@
+    )
+    {
+    }
+
+    def "RunnerTorso" (
+        prepend references = @../AI-Asset/RunnerTorso.usdz@
+    )
+    {
+    }
+
+    def "RunnerLeg" (
+        prepend references = @../AI-Asset/RunnerLeg.usdz@
+    )
+    {
+    }
+
+    def "GateFrame" (
+        prepend references = @../AI-Asset/GateFrame.usdz@
+    )
+    {
+    }
+
+    def "HoverEnemy" (
+        prepend references = @../AI-Asset/HoverEnemy.usdz@
+    )
+    {
+    }
+
+    def "SupplyCrate" (
+        prepend references = @../AI-Asset/SupplyCrate.usdz@
+    )
+    {
+    }
+
+    def "RunnerTorsoCorrected" (
+        prepend references = @../AI-Asset/RunnerTorsoCorrected_B.usdz@
+    )
+    {
+    }
+
+    def "RunnerUpperImage" (
+        prepend references = @../AI-Asset/RunnerUpperImage.usdz@
+    )
+    {
+    }
+
+    def "RunnerSingleLegImage" (
+        prepend references = @../AI-Asset/RunnerSingleLegImage.usdz@
+    )
+    {
+    }
+}
+

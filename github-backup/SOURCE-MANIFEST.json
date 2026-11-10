@@ -1,0 +1,1662 @@
+{
+  "project": "gate-rush-demo",
+  "version": "0.4",
+  "sdk": "6.3.2-rc.1",
+  "android_version": "0.4 / 4",
+  "snapshot_date": "2026-11-10",
+  "files": [
+    {
+      "path": ".gitignore",
+      "size": 441,
+      "sha256": "aea75c7fd54461b74663416e9cdc794a472e4805c041642f5044493cac4e8a6a",
+      "git_blob": "f7169b675e04e9b2720678ed8e73389899387bcb",
+      "mode": "100644"
+    },
+    {
+      "path": "README.md",
+      "size": 8644,
+      "sha256": "e2de31b939b6118cb952c4dcacc3e4221c0e16363cc4bc095ed856e1fffbe635",
+      "git_blob": "953df116c60ad8cd021f164ae1be365e510bc64d",
+      "mode": "100644"
+    },
+    {
+      "path": "build.gradle.kts",
+      "size": 219,
+      "sha256": "47774018405adb4336f34aa05a2fdc6ca8c2175e5efc5b705f1ecb101eae7094",
+      "git_blob": "7f09f7c5a9f0705ef064cb16ea8dcba74d139539",
+      "mode": "100644"
+    },
+    {
+      "path": "gradle.properties",
+      "size": 1347,
+      "sha256": "0c64dc4bd012fbcb1b99318d519ac007261fab30c2ad9d3f04d8ed4282e128e9",
+      "git_blob": "132244e5b8f6048a24d948876caa1d3b3df5dc1f",
+      "mode": "100644"
+    },
+    {
+      "path": "gradlew",
+      "size": 5766,
+      "sha256": "63135287117a1e6d12c84580f1f49c61d1ba02218ecd28660605e97f976e7d65",
+      "git_blob": "4f906e0c811fc9e230eb44819f509cd0627f2600",
+      "mode": "100755"
+    },
+    {
+      "path": "gradlew.bat",
+      "size": 2674,
+      "sha256": "c46a27c79007746de5922b17abb6230d64ad8b1ba3ad1585ee5c6543c2a9b129",
+      "git_blob": "107acd32c4e687021ef32db511e8a206129b88ec",
+      "mode": "100644"
+    },
+    {
+      "path": "settings.gradle.kts",
+      "size": 947,
+      "sha256": "b051c6f22d61cb3ee8f2bffe8fb77f683bce0876e33f151612d56c68dc334b60",
+      "git_blob": "5cd2b3a5fc8eec1d90e136a3b1da08887999c151",
+      "mode": "100644"
+    },
+    {
+      "path": ".scratch/architecture_check_result.json",
+      "size": 108,
+      "sha256": "2b92ce2c70ab1856ee65b4dacf44f1d20b81a34da8cdc1526a9c970e9666c8f5",
+      "git_blob": "c2bd2a0fdcecdf9b633a74f05621dff113a7a2d1",
+      "mode": "100644"
+    },
+    {
+      "path": ".scratch/design-doc.md",
+      "size": 33003,
+      "sha256": "b5b4eb27ad28a7014ac52c636ced4a50d6beeaf32a7604b67ade1a0ae1858357",
+      "git_blob": "6ac954df3e5726f1a18247656a6a544d63786386",
+      "mode": "100644"
+    },
+    {
+      "path": ".scratch/design-spec.json",
+      "size": 93555,
+      "sha256": "a5c4068ccd425c00c242269b0bafb081c6a7aa445d0b26390c0a110a1ae54a3e",
+      "git_blob": "8fae7750fc8ff92459eae6440ba79de2fe78b1e3",
+      "mode": "100644"
+    },
+    {
+      "path": ".scratch/design_escalation_receipt.json",
+      "size": 319,
+      "sha256": "9773ea6de1eedf2a6d026654f7801cde122626cfefc606d8dd91870fd1b000d4",
+      "git_blob": "77c926294b5c7f988302d27124a3d54c10abfabb",
+      "mode": "100644"
+    },
+    {
+      "path": ".scratch/environment-audio-0.2.md",
+      "size": 2099,
+      "sha256": "ca47c6afa93480df65eccd72f27a03ee502aa3353cbfe5b0e885d7cc9d92fe9e",
+      "git_blob": "deeed860b43a15482b298b456d79bcd26a9591f8",
+      "mode": "100644"
+    },
+    {
+      "path": ".scratch/implementation-map.json",
+      "size": 1571,
+      "sha256": "e99b40a1ed900853cad995b7d82f0dd415b81aef5506d195abb711e585a924bb",
+      "git_blob": "08e69f9efa655ce84ff8ef9b7ba52e38e794c757",
+      "mode": "100644"
+    },
+    {
+      "path": ".scratch/intent-brief.md",
+      "size": 2178,
+      "sha256": "640c9fabcf399ab7a41262fe87331a7d1498b24eef10b11b691ce4c79075b9dc",
+      "git_blob": "1fd9980b85037dcd69552e3bc7cc7830be9dc116",
+      "mode": "100644"
+    },
+    {
+      "path": ".scratch/onboarding_handoff.json",
+      "size": 688,
+      "sha256": "4a69e1f6996dd2366db825c16b104bc01bc94110a6c01223f7de0b0e2300445e",
+      "git_blob": "b2e412b901846460cedc072e410a4bef9a1449ab",
+      "mode": "100644"
+    },
+    {
+      "path": ".scratch/placement-check.json",
+      "size": 1417,
+      "sha256": "4e49b2d85bdba112cd94c6b04ad34ee118c8ae748a9bb50e2d6f636916e68d16",
+      "git_blob": "e607abba0a380be4bf3f28989f91e1143b50b034",
+      "mode": "100644"
+    },
+    {
+      "path": ".scratch/preview.html",
+      "size": 289833,
+      "sha256": "859fbac3b480621aedbdea12aafa869cb1b7505de5e33c914d29e85e58211e4e",
+      "git_blob": "c5d1b846aeb2e18f6f4f85ae13d2e3c809b7fb35",
+      "mode": "100644"
+    },
+    {
+      "path": ".scratch/runtime-asset-provenance.json",
+      "size": 2228,
+      "sha256": "d944979cbb4378230cd0d7abb26fca4ed7557f6fc2b26e0a93946dcd0982cf66",
+      "git_blob": "71f1dbe742d845498c45f393743f5d895c8f8f3d",
+      "mode": "100644"
+    },
+    {
+      "path": ".scratch/runtime-verification.json",
+      "size": 1862,
+      "sha256": "ede6de206a37582121eda953a61aa71dd27f19a8f5651ef446dcdddf36815d31",
+      "git_blob": "1221d49c67c0b4d8cbe730604234ce3e4b843b1d",
+      "mode": "100644"
+    },
+    {
+      "path": ".scratch/workflow-limitations.md",
+      "size": 4819,
+      "sha256": "fc726015a62e784cd13ee3ff619391830b7ef5bff6de6a3647dc34572e04ce9f",
+      "git_blob": "359e3a5013145ac9c0726c3febe17c208cfa0517",
+      "mode": "100644"
+    },
+    {
+      "path": ".scratch/asset-review/Blaster-source-six-views.jpg",
+      "size": 59082,
+      "sha256": "f465d5ca2099e3ff67a093583dc64b10294f9c68a2a29b19b4f5d1875337d383",
+      "git_blob": "405f27138ecff7574a2b2f988a4c32136fa955ab",
+      "mode": "100644"
+    },
+    {
+      "path": ".scratch/asset-review/GateFrame-source-six-views.jpg",
+      "size": 96762,
+      "sha256": "c4d784f72c3f74291efeea3be985be73a0df61003419a884876f893181d4ddc5",
+      "git_blob": "21212ac1a1fcc603fb31dcb53e418fd324f408a2",
+      "mode": "100644"
+    },
+    {
+      "path": ".scratch/asset-review/HoverEnemy-source-six-views.jpg",
+      "size": 113090,
+      "sha256": "8f4211ad39096033369728c47124cc9e3937347f872ec20874c287568947d46e",
+      "git_blob": "7175669df449ed65176f6aa37163837dff797fce",
+      "mode": "100644"
+    },
+    {
+      "path": ".scratch/asset-review/Lamp-source-six-views.jpg",
+      "size": 51062,
+      "sha256": "536322aabdb6ca22071a7b4e7cb63cd48e78b03da5355f1973b3f0395e0502b8",
+      "git_blob": "5e1db487b52e016e79da2625fdf4f2ef83e13db0",
+      "mode": "100644"
+    },
+    {
+      "path": ".scratch/asset-review/RunnerSingleLegImage-source-six-views.jpg",
+      "size": 75164,
+      "sha256": "44eae15ee77d55388ccf77b6bf2f7ce638dd94ffa4dc83f25db21048f45b5935",
+      "git_blob": "0b7b64324502137981e2872729b59e174db794e5",
+      "mode": "100644"
+    },
+    {
+      "path": ".scratch/asset-review/RunnerUpperImage-source-six-views.jpg",
+      "size": 105609,
+      "sha256": "fed8d14941f7770a8c65fe6f555d533ba1bd4a544fad917379639b790d3f6062",
+      "git_blob": "e64d5b7fbb08d4ed6a9d82231494d8c7537faf1f",
+      "mode": "100644"
+    },
+    {
+      "path": ".scratch/asset-review/SupplyCrate-source-six-views.jpg",
+      "size": 185984,
+      "sha256": "1780118497904b692944cb2ffe62079e4648c5523ced17862cd1e980128f258e",
+      "git_blob": "b1033893a8e6991c2e2fbfee462aa8a1293e6c6c",
+      "mode": "100644"
+    },
+    {
+      "path": ".scratch/asset-review/kit-art-review.jpg",
+      "size": 136647,
+      "sha256": "d9ea37322663b49c51a32b6362efea94759c8889878020debb18c10c776766af",
+      "git_blob": "3768868044376d9e230a77c5168694593924275d",
+      "mode": "100644"
+    },
+    {
+      "path": ".scratch/model-guides/runner-leg-guide.jpg",
+      "size": 128474,
+      "sha256": "ba5e03ee6f1d36e626dbccb273056bb2a58c79b58d8a6927877b8be39467b5f4",
+      "git_blob": "3357cb6e97e50e979ffe23f13bc26ef549cdad00",
+      "mode": "100644"
+    },
+    {
+      "path": ".scratch/model-guides/runner-upper-guide.jpg",
+      "size": 152523,
+      "sha256": "01c6fd052ad4899b05b56ce7e88cfa945d34122e3fd28cf8b7c613150e180ad3",
+      "git_blob": "308da22edda0ea04f50979ff0a9e8a58d5789f54",
+      "mode": "100644"
+    },
+    {
+      "path": "app/.gitignore",
+      "size": 7,
+      "sha256": "5b46eb48d96e8571e8c93e4ef4f6ffbe6807b6d7350664a36a064e1167a32718",
+      "git_blob": "796b96d1c402326528b4ba3c12ee9d92d0e212e9",
+      "mode": "100644"
+    },
+    {
+      "path": "app/build.gradle.kts",
+      "size": 2322,
+      "sha256": "053d459cbc876435b28b2b98d5bda045868418cec6307d8ce9b1ff4372d278cb",
+      "git_blob": "56425d27324f4b48fc489e99d4660d2a08c08f81",
+      "mode": "100644"
+    },
+    {
+      "path": "app/proguard-rules.pro",
+      "size": 751,
+      "sha256": "1cf8c57e8f79c250b0af9c1a5a4edad71a5c348a79ab70243b6bae086c150ad2",
+      "git_blob": "f1b424510da51fd82143bc74a0a801ae5a1e2fcd",
+      "mode": "100644"
+    },
+    {
+      "path": "app/.scratch/architecture_check_result.json",
+      "size": 292,
+      "sha256": "30f6286e4cc8a562c60e721855929f8fec33b469819238d375b4318fb3ba805c",
+      "git_blob": "0588ecd3134f898f0c7bcbedea8b2436487781e0",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/androidTest/java/com/example/gaterush/p7c91a3e2/ExampleInstrumentedTest.kt",
+      "size": 688,
+      "sha256": "605824b5c041ff2474b4465299557a96f2978007db6edb55a3eb69edec585a84",
+      "git_blob": "750542069f7d334a1b15b18b3de8f291797f12f3",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/AndroidManifest.xml",
+      "size": 3095,
+      "sha256": "2ca48fd57e67dd4b65967292e7cd17ccb3caa16cc91c052636fa0edcdf02b280",
+      "git_blob": "725dac05ffec8bf22473eeb749ac046fbd7462d1",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/assets/audio/blast.wav",
+      "size": 42284,
+      "sha256": "d0c23d32d7b839c1d703257bff65d546ee71a5b8dc89e1f09cab0c1e966e26e6",
+      "git_blob": "470c6717e1177792c74babb26d01850b56c5329b",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/assets/audio/clear.wav",
+      "size": 61484,
+      "sha256": "c3765ba230c9b9a92255704b3cfaf0a58d6c749a5401e0a91bb5a66c9df09570",
+      "git_blob": "7fa6bee3c3bf9b6429ca242c9a23dcffacf27e93",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/assets/audio/enemy.wav",
+      "size": 22124,
+      "sha256": "ddc2dc9ced4419a7451f52a27dc1c9278d8d264a936785e872d563ac124a0b89",
+      "git_blob": "cc38cace63aea666a23a4a5bbc6432d412df8be1",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/assets/audio/gate.wav",
+      "size": 32684,
+      "sha256": "90bd6d44079c8a78d26f5a521331c8cc34dcc851e5a73fa74c8d195500cecdcf",
+      "git_blob": "6d1cc0f6602ef4ab7f363fba9177923f9c677812",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/assets/audio/hurt.wav",
+      "size": 24044,
+      "sha256": "e8bd86b842035797877193eac4136cf6765d56aade1dd8a1c64eef7936d54a9e",
+      "git_blob": "5f76c7fbbbd84e0e2ac48f827dd53830ed227c3b",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/assets/audio/impact.wav",
+      "size": 13484,
+      "sha256": "fc1061c91de649e862be314c4b5d17cdfc557df0c7d4e6b905667fa25ab8b0f9",
+      "git_blob": "f1c059b4343b1a63f637fe0202bbf10063fdc5cb",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/assets/audio/pickup.wav",
+      "size": 37484,
+      "sha256": "6fe7f4eb69c7c17a76baf19232953d3af514fc02bc1e97ee929e797092b2f1ff",
+      "git_blob": "a6669360584b067767886f1699708b8c99068ba0",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/assets/audio/shield.wav",
+      "size": 28844,
+      "sha256": "086546d541c9410b2a207394de6a07bdd89397201b5ade499900fde98bd453b5",
+      "git_blob": "3a577cb9e42d96b2e98d155c543ae7589ed1d663",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/assets/audio/shot.wav",
+      "size": 11564,
+      "sha256": "573af7e3cf9339fdae98a04ad316484c03ac75aab64fdf4e948f7cf1035d3f5e",
+      "git_blob": "e7f14965df980cbf684f2b9be63250db040f4849",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/assets/labels/burn.png",
+      "size": 6509,
+      "sha256": "52de8738fb5c3e70284d9d992d7be6b4eef8ed3adbd011324c045ceaef3a5f44",
+      "git_blob": "8dc4555bcacad6ffbd2d3bdc83ac1652ad834dcb",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/assets/labels/chain.png",
+      "size": 4160,
+      "sha256": "12f346f09a29e3b7e45b12ed5bbe89cc950bade165363f24c17c49ee32ac8f78",
+      "git_blob": "6aec7fcd98b71af2be0d0f74054e5af76f107a3b",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/assets/labels/core.png",
+      "size": 3767,
+      "sha256": "42f474f672006dcfe0ab8884233826e70ed84e22505eba7bea0c59ae5a306650",
+      "git_blob": "08a0ec0ed214a50aac4e94e82204236091cd8e09",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/assets/labels/explosive.png",
+      "size": 5070,
+      "sha256": "3cd3500ec3677e7d5ae11a3b3f524adfed49a5e40cf9a3ddb51c34e324570fb9",
+      "git_blob": "95c8776465db4455a95e72524531de0357e78cdf",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/assets/labels/heal.png",
+      "size": 2972,
+      "sha256": "b92e5eb112da807d3d0657255be2f4b576d0c8ac8bcefca95062dcb6531d31cc",
+      "git_blob": "b2c98a4e27a1241ba90683b19f3258dbcc3c5c11",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/assets/labels/hp.png",
+      "size": 3162,
+      "sha256": "43cb7b966b97f9c6eadc4aac2b01711fefbc2434b42f7c18d09a8ec8444cabf2",
+      "git_blob": "1a405bb365d5a3231f2dd7b92ba3af7d42d57ec7",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/assets/labels/ice.png",
+      "size": 5388,
+      "sha256": "023ea01c59eed453ff54be0e5f37d1de0068a018dbf0a49d3df34ccd43644bcf",
+      "git_blob": "554ed6a030b5c8552690e5a383dea1ef7005c70a",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/assets/labels/pierce.png",
+      "size": 4372,
+      "sha256": "6ce0b001b293a4e1dbf09f93937f5eb3affabe0391e80e5f03eba2e1b297b481",
+      "git_blob": "b002f938006cb8fb48be86e2d8748b95d57b784a",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/assets/labels/shield.png",
+      "size": 2634,
+      "sha256": "647d704ffb4106728d04953eb9e53c5f88ba5c9529f01ad915789259892dd19a",
+      "git_blob": "733d25b730825f09053247018dda778f2db8e4fb",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/assets/labels/speed.png",
+      "size": 4119,
+      "sha256": "0898fdacea86513f210f0bd0bdc8030e0790e2f5de5db3b8ed21035da2f49324",
+      "git_blob": "f175a5580c81a9d74bb14a037a3afcd184eee7f5",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/assets/labels/spread.png",
+      "size": 3772,
+      "sha256": "0415fa536b918f838dcbced31bd4c5839a7fc1054ea143edc37496cb0573d4c3",
+      "git_blob": "494b58a5c6b74d8a76fa941d5fc10dfb60a53411",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/assets/models/Blaster.usdz",
+      "size": 3844281,
+      "sha256": "d7abd295815828335b1f3ce8b6417b84b53cb43a9423e701a4958da576d0a2cd",
+      "git_blob": "1318949cd18b04d81144fbdf28cf11f35c7f1d17",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/assets/models/GateFrame.usdz",
+      "size": 3757580,
+      "sha256": "715980f9eb812a8ffe2007c99813ece1e76d8ec2baa82c7bea89fd6dd057447d",
+      "git_blob": "5fbd8a49c5ac2927bffbf011f6c9580ede44cc77",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/assets/models/HoverEnemy.usdz",
+      "size": 4028557,
+      "sha256": "e839b7291eba2e56438fd1969c54279249351d21b5b5e3d6b384284582de6a45",
+      "git_blob": "89413568e9f65617fae9c2c4b6d9b6fbdf24b6e8",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/assets/models/Lamp.usdz",
+      "size": 3603714,
+      "sha256": "c8019042c5afab0c9d989cdf0b67357eb14665c748fbe5cc3c1538c5b3504ec7",
+      "git_blob": "a85d08ab7296a41a58906604b588fb4c8fd1e950",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/assets/models/RunnerSingleLegImage.usdz",
+      "size": 1932278,
+      "sha256": "2fba36b6b3063e4f1da97fb9b679977fc766e35cb306c01409b6acdc3dfe9256",
+      "git_blob": "932194bc9dcfb443284cdc3d31a6e65f318b761a",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/assets/models/RunnerUpperImage.usdz",
+      "size": 2174841,
+      "sha256": "021d1fe72753d556ac1dc113e2d4cd041d42c2621a543e7f3cad4a6e0559b4f7",
+      "git_blob": "353f2c64400d823b414baca28196b774e10a909e",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/assets/models/SupplyCrate.usdz",
+      "size": 4188120,
+      "sha256": "830504fc9130aa5300495d39aa27dbc4894895b8b6e13cc30c7c12732fa650ab",
+      "git_blob": "b14a946d57293e6063c9a9b9ecc81155175f0c65",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/assets/textures/toy-sky.png",
+      "size": 38689,
+      "sha256": "a8c56475f452be8c2a5364e2eccc4dc4633d451f438bdbeed50dcf59a93f4e5d",
+      "git_blob": "80dc54534da1704672890f3b60aa95d487fae6c0",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/java/com/example/gaterush/p7c91a3e2/Main.kt",
+      "size": 416,
+      "sha256": "56abe08ab93f2bb7d0e4daefeb86689939f690193fe0b7b476f5ec7512c5278f",
+      "git_blob": "8b579f45654560dd0d5637ec6877539cd947106b",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/java/com/example/gaterush/p7c91a3e2/content/HomeStage.kt",
+      "size": 198,
+      "sha256": "1eff8905d34db2980648ce7f55978aaceda68120d0216a189c7f914fbbb6f367",
+      "git_blob": "26918abd3c6c5908b321c6438c6e50d247783a7a",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/java/com/example/gaterush/p7c91a3e2/data/repository/LevelRepository.kt",
+      "size": 4450,
+      "sha256": "c38a0590aaf8f830b87859769aaa0cbb048a19fce52069d279c00715504a3f12",
+      "git_blob": "a1e9a4182d075403837a79e260cdcb55451de4ae",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/java/com/example/gaterush/p7c91a3e2/domain/model/CombatGeometry.kt",
+      "size": 1203,
+      "sha256": "00186cba5c08ecd4dad612f03af82b5a5957f6979967f0447e8d37e3c4758e81",
+      "git_blob": "44238dd6332b9b65dab7c75551ba06d5834bcbc2",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/java/com/example/gaterush/p7c91a3e2/domain/model/GameModel.kt",
+      "size": 4115,
+      "sha256": "0a7c339f33ce65902ab636fb360eda4577b7c37852fbf333d64ac7de7bb78da7",
+      "git_blob": "7677958fc229f162268338be4aac54e7db4a126f",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/java/com/example/gaterush/p7c91a3e2/domain/usecase/PlayGameUseCase.kt",
+      "size": 13329,
+      "sha256": "83f50e96c8623a1712a22448b721aaaaeb41bfe662000f83d18d858fd6193077",
+      "git_blob": "d4e35ef43e491bb7f196635cc6c43b18af505446",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/java/com/example/gaterush/p7c91a3e2/platform/LaunchActivity.kt",
+      "size": 561,
+      "sha256": "a440dd08dbce42b988a6eb9ae0df1df189f987865c8e35d9c2dca68d9d959471",
+      "git_blob": "005b9a5202e47a544bd8f042779e3546a05515f2",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/java/com/example/gaterush/p7c91a3e2/platform/SpatialApplication.kt",
+      "size": 308,
+      "sha256": "a7e63a97336a87b65bb4857d2c705d6eacf3aa6b247b072e28add5a12f482c86",
+      "git_blob": "9cecf860582cc1af741fb82ac977d3f28dd9f11a",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/java/com/example/gaterush/p7c91a3e2/scene/DurabilityDigits.kt",
+      "size": 1388,
+      "sha256": "421f9c1fa8a1d28d370b6a2f39c9a4b81120935e58246a88eccd27902520d30f",
+      "git_blob": "c5875cc23e25de6c960746e8b89a0ec3fa58afd3",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/java/com/example/gaterush/p7c91a3e2/scene/GameAudio.kt",
+      "size": 4302,
+      "sha256": "2cd9d6c526b381761c532f1f0ef28f0fb418644cee9a621f30d060dc4cf763c6",
+      "git_blob": "dfdfcb06c322bbf752dbca409a210baa42c77a88",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/java/com/example/gaterush/p7c91a3e2/scene/GateRushScene.kt",
+      "size": 25998,
+      "sha256": "275943c4098dcc759a73831dfeb4715a32bf53c6b5d9e0d4182a426773151ffc",
+      "git_blob": "8b7e286ea0eab62f41f5926b645676eec0a5450b",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/java/com/example/gaterush/p7c91a3e2/scene/SceneResources.kt",
+      "size": 5928,
+      "sha256": "6446f729553913020dfcfbf48df5ec9c07c9495bb1ad62dbd1dcfe286b72831d",
+      "git_blob": "0c511190c85efbcb04809b237c3a8004eeb4a1f3",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/java/com/example/gaterush/p7c91a3e2/scene/ToyEnvironment.kt",
+      "size": 2254,
+      "sha256": "948386f8b7902b7dd56cb89db31fb1014fda50a054e2608526e505e26b4e1cab",
+      "git_blob": "743fc1bf6b202d375f7cd67d5f80b1e04fbd0be8",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/java/com/example/gaterush/p7c91a3e2/ui/game/GameScreen.kt",
+      "size": 5853,
+      "sha256": "1edd8bfcd3ec9743d710c408d38320e057a866613f9cfe76a00a83e7765c2097",
+      "git_blob": "e899b333024fe0e115cae925ae9834de1750e468",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/java/com/example/gaterush/p7c91a3e2/ui/game/GameUiState.kt",
+      "size": 680,
+      "sha256": "aa2fa690ed198395fa97943e35b233df57c060aa675b7ce286179704b9921894",
+      "git_blob": "bd3f3cf2bffed6dcfc0d1846bab184fca64bb15b",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/java/com/example/gaterush/p7c91a3e2/ui/game/GameViewModel.kt",
+      "size": 1252,
+      "sha256": "b10c585427434a04f65c8cc42a55fa0414ebea1bb435517615c01a5ddf34c120",
+      "git_blob": "d750cf3aeb8ba9e90cea20af39a0d5159390855d",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/java/com/example/gaterush/p7c91a3e2/ui/game/GameViewModelFactory.kt",
+      "size": 588,
+      "sha256": "a4941c589a34196ef4113c84739795f381476e84d236a0e2b49eddf0c11ac1a1",
+      "git_blob": "9e7e23db148bc2d818d7612cefea53fbccd95b4e",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/java/com/example/gaterush/p7c91a3e2/ui/game/components/GameHud.kt",
+      "size": 7053,
+      "sha256": "ecf7d8cd39f79c5265438fe3b871e8f7c318d09203f8c289bf01528f6a80475e",
+      "git_blob": "8a6bfb82dd1a3c3cae86fddd8f06c545d5d6e05d",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/java/com/example/gaterush/p7c91a3e2/ui/theme/GameColors.kt",
+      "size": 928,
+      "sha256": "ad0a0845ece76e3e3c0e0c99c993ae4a800d5739491f5c69ede383e6bc8d4172",
+      "git_blob": "3ff8afe737fc32677816ae82a0a29ef3b75eaa1e",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_launcher_foreground.png",
+      "size": 456036,
+      "sha256": "3044d2ef10d9c2551a3956e71db9c56973ffb37a0ce83d001c6f3fa4af4f6cce",
+      "git_blob": "d402f4421fce25724556f545b565aea22f6b6b9d",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/res/drawable/icon_3d_layer_0.png",
+      "size": 222387,
+      "sha256": "ff273c4671fa12e2652bb8ed974c3462f51dc87e295baa346d0234ea8c4f2496",
+      "git_blob": "ae80aab69f8cc97849e588a15f9a363d4ae6abb1",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/res/drawable/icon_3d_layer_1.png",
+      "size": 55732,
+      "sha256": "9f331b1d67bc8432045a994f557ee4e8ba962707542f4e1d7a5531f56a76bb9d",
+      "git_blob": "9eafebd721e68318245d9f2c1be4c522807a0f18",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/res/drawable/icon_3d_sdf_0.png",
+      "size": 106880,
+      "sha256": "8112ca61542a21296dd65e46a089599415f7d0b3441290c72bcab405cff361f2",
+      "git_blob": "c9a4785f891b2b0619c700c0b4f36e21be1711e9",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/res/drawable/icon_3d_sdf_1.png",
+      "size": 26053,
+      "sha256": "d685a4182a36c986d212ba2a351f228f82db77a44ae8848263cf67cdcf771f49",
+      "git_blob": "b326cb0b143865d26ae1b337b1c97492f6b23953",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/res/mipmap-anydpi/ic_launcher.xml",
+      "size": 273,
+      "sha256": "6816d13425eb7e5a1f32d3531eebf146e5be0642c92d40de9281743cb80954a7",
+      "git_blob": "55771eca24cb7a5fddc625802c775ec70e02dc1d",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/res/mipmap-anydpi/ic_launcher_round.xml",
+      "size": 273,
+      "sha256": "6816d13425eb7e5a1f32d3531eebf146e5be0642c92d40de9281743cb80954a7",
+      "git_blob": "55771eca24cb7a5fddc625802c775ec70e02dc1d",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/res/mipmap-xxxhdpi/ic_spatial_launcher.png",
+      "size": 315383,
+      "sha256": "d7d4df68adc56bf4ee27a14ccff5bcf174aa9e45d6ff3adf36e3751246764c76",
+      "git_blob": "91d97557df1960e5477daa956a1763e9feeeef32",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/res/values/colors.xml",
+      "size": 379,
+      "sha256": "57681038afd005dcd260eabdd6d16619709c4a3fe20324362ea00e093e85b5fd",
+      "git_blob": "ca1931bca99e3b8a4c753ae1a1c41428e5622484",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/res/values/drawables_3d.xml",
+      "size": 339,
+      "sha256": "b184f12693135aee48fe26d4413cf7c2c311e7abc96ff647290b6abc57cb6d04",
+      "git_blob": "f607e7afaa636280f2fa3cc2e7cf3752ed6ea38b",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/res/values/strings.xml",
+      "size": 127,
+      "sha256": "fd9d9dfc571ff26ae5a1a2354994e7379080663a89253575c276ef3cd4e655dc",
+      "git_blob": "055448a6295da9009cb6de3d8975d406a7e5249e",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/res/values/themes.xml",
+      "size": 162,
+      "sha256": "92738a1588cd4b818a1d288f1366f4db0468a19cfc370e6623647facc06a1082",
+      "git_blob": "e2d76adac117d16b23205c94347187544522123d",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/res/values-night/themes.xml",
+      "size": 162,
+      "sha256": "92738a1588cd4b818a1d288f1366f4db0468a19cfc370e6623647facc06a1082",
+      "git_blob": "e2d76adac117d16b23205c94347187544522123d",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/res/xml/backup_rules.xml",
+      "size": 479,
+      "sha256": "602e880ca25c32b557c19cf6d9172e9bf55595cf6440d476d1787652f5889e49",
+      "git_blob": "148c18b6593d922c6d96567bb22251a151668f5b",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/main/res/xml/data_extraction_rules.xml",
+      "size": 488,
+      "sha256": "b2e1daf7a7e6fe1f28d49ab9eae35a77bc74a4f443aeeb44ca2275ad2bf51835",
+      "git_blob": "7b7d3cb5009565a5144648a4b25de771a6df7409",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/test/java/com/example/gaterush/p7c91a3e2/domain/usecase/ElementalCombatTest.kt",
+      "size": 8758,
+      "sha256": "068540a56b4b199ce656d186dbf3af461b75c42c149aa28f01109d94994bd76c",
+      "git_blob": "ee1a4c0bc458b4c96fae9cecca6f9f3787816db1",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/test/java/com/example/gaterush/p7c91a3e2/domain/usecase/PlayGameUseCaseTest.kt",
+      "size": 10920,
+      "sha256": "24cada88868ed05d2c61ccb6c6752e140f1ed5fd91b7729429b13bafefd33dab",
+      "git_blob": "583a20f6f42477ae5440e4546d67d4d2ec24a481",
+      "mode": "100644"
+    },
+    {
+      "path": "app/src/test/java/com/example/gaterush/p7c91a3e2/ui/game/GameViewModelTest.kt",
+      "size": 2044,
+      "sha256": "762ae74092c39521b144127145b6596019b2bfa2e9e119e686da9815d061c770",
+      "git_blob": "da1282f7b141793acc6c587191177e6bcbdf8913",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.gitignore",
+      "size": 10,
+      "sha256": "cf237c7aff44efbe6e502e645c3e06da03a69d7bdeb43392108ef3348143417e",
+      "git_blob": "e43b0f988953ae3a84b00331d0ccf5f7d51cb3cf",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/ModelView",
+      "size": 35,
+      "sha256": "713975534cac34192e6cdb155c9904ecca1d11bc76e4cc04f1f9686c37f10f2b",
+      "git_blob": "db5e438fc28439275179a0dcc0f4e98d0f61518d",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/SpatialPackContent.spatialproject",
+      "size": 136,
+      "sha256": "12ef60c145bf701398c44404d15eb38fd8b54b46c2cedc5152005fdd24976ea4",
+      "git_blob": "0683130464a1093fefbb6f063f33619e94923db5",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Component/component.json",
+      "size": 23,
+      "sha256": "00070f6a1fd3332c284a60a19ad819d598d084e00fdd6024672a79f958deb215",
+      "git_blob": "026b5e89a35faff0d7daf829f20d3f4117f9fd9f",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/Blaster_1793951552933/extracted_image_0.jpg",
+      "size": 3506425,
+      "sha256": "c0fbaecb1f85df9b89c029cd48d5acc2e7e27e729e6e4e99da49a8c9fb37493d",
+      "git_blob": "449a1c0fad1d95a0959b682925c95dcfc4adb91d",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/Blaster_1793951552933/extracted_image_0.jpg.picometa",
+      "size": 2105,
+      "sha256": "3aee18a5fe4af032b0f5fdf42f58ad185fd307b6a5200c68d59c46ad4ac784f9",
+      "git_blob": "2ac9f7ad75f6d835b48274684359408104738617",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/Blaster_1793951552933/extracted_image_1.jpg_metallic.png",
+      "size": 756584,
+      "sha256": "6aea78aa91fc73b145588421feed1edaff0b6249fd2f0f686990d11533d34c6a",
+      "git_blob": "7a622b691033a818320544ea21702810a7082730",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/Blaster_1793951552933/extracted_image_1.jpg_metallic.png.picometa",
+      "size": 2111,
+      "sha256": "f58506fa4b2c91fd87e7951b6d72966cdede7bf50568b56d56fde7bf2c9fb7ce",
+      "git_blob": "1291287fb851ce492bbd2b1d031404a66697ddfa",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/Blaster_1793951552933/extracted_image_1.jpg_roughness.png",
+      "size": 1038656,
+      "sha256": "17f7e15fb1fc06ed8e2f2ce97cd4f42574233e2fd6a87f08cab0e43c7f4a3bab",
+      "git_blob": "9e7193c00f478256894b7189d1e4b4cebe81aa1b",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/Blaster_1793951552933/extracted_image_1.jpg_roughness.png.picometa",
+      "size": 2111,
+      "sha256": "f58506fa4b2c91fd87e7951b6d72966cdede7bf50568b56d56fde7bf2c9fb7ce",
+      "git_blob": "1291287fb851ce492bbd2b1d031404a66697ddfa",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/Blaster_1793951552933/extracted_image_2.jpg",
+      "size": 2396122,
+      "sha256": "f1bcb22cb64d83c835a28a91e02a5dc09f1d3e4f8f4d49c23472e433dd2e1ca2",
+      "git_blob": "8d1d9f67c248a89aacbc25be6aef7259311e6371",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/Blaster_1793951552933/extracted_image_2.jpg.picometa",
+      "size": 2111,
+      "sha256": "f58506fa4b2c91fd87e7951b6d72966cdede7bf50568b56d56fde7bf2c9fb7ce",
+      "git_blob": "1291287fb851ce492bbd2b1d031404a66697ddfa",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/Blaster_1793951552933/model.7w_t8ouz.usdc",
+      "size": 3017364,
+      "sha256": "24a29ffa8e5fe06b1b8fff4ec07d9ed1e031501235ca1df123d3b5051efff021",
+      "git_blob": "a29a13b2ace45a3b7d078f54e19e275cb37b1041",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/GateFrame_1793951565136/extracted_image_0.jpg",
+      "size": 1958716,
+      "sha256": "d0dc4ea724c3b8fe375ce9a9df399d117f51f7d5d3d7c698cfaee0ad10125c5f",
+      "git_blob": "1c96ac8f3ef1f9d747946b693b02f5e6d990f2be",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/GateFrame_1793951565136/extracted_image_0.jpg.picometa",
+      "size": 2105,
+      "sha256": "3aee18a5fe4af032b0f5fdf42f58ad185fd307b6a5200c68d59c46ad4ac784f9",
+      "git_blob": "2ac9f7ad75f6d835b48274684359408104738617",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/GateFrame_1793951565136/extracted_image_1.jpg_metallic.png",
+      "size": 652262,
+      "sha256": "e24bcc6130332a5d955fb0f127195c55bead7e03d2101aaabeab0f23d6087743",
+      "git_blob": "7cbfadeabf6000a3ad674b1603ff301aac33086d",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/GateFrame_1793951565136/extracted_image_1.jpg_metallic.png.picometa",
+      "size": 2111,
+      "sha256": "f58506fa4b2c91fd87e7951b6d72966cdede7bf50568b56d56fde7bf2c9fb7ce",
+      "git_blob": "1291287fb851ce492bbd2b1d031404a66697ddfa",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/GateFrame_1793951565136/extracted_image_1.jpg_roughness.png",
+      "size": 1052290,
+      "sha256": "a6c6f5e430402c4de9928e2fe3b9de34bff1cfc18bd7cb01b5dcabf22c9efccb",
+      "git_blob": "0324bde2e801988e5910e24ca49e3d8f63aea1ae",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/GateFrame_1793951565136/extracted_image_1.jpg_roughness.png.picometa",
+      "size": 2111,
+      "sha256": "f58506fa4b2c91fd87e7951b6d72966cdede7bf50568b56d56fde7bf2c9fb7ce",
+      "git_blob": "1291287fb851ce492bbd2b1d031404a66697ddfa",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/GateFrame_1793951565136/extracted_image_2.jpg",
+      "size": 1295315,
+      "sha256": "b80d510fb197dca70739cb42f4c2d7154744c09d54ce23a1249ae80960cd686f",
+      "git_blob": "b4b99ad51c4011be546ec2ace0e95e8e5bc0f6f8",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/GateFrame_1793951565136/extracted_image_2.jpg.picometa",
+      "size": 2111,
+      "sha256": "f58506fa4b2c91fd87e7951b6d72966cdede7bf50568b56d56fde7bf2c9fb7ce",
+      "git_blob": "1291287fb851ce492bbd2b1d031404a66697ddfa",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/GateFrame_1793951565136/model.u0ytlg7a.usdc",
+      "size": 3141634,
+      "sha256": "321c7b5f13f1c187d65390b165dd24021ecb210828737206bc0f7707bdf04394",
+      "git_blob": "1a5d286a3a499eed58f8de13113ee5fc9d6b1245",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/HoverEnemy_1793951566605/extracted_image_0.jpg",
+      "size": 2863705,
+      "sha256": "9b25b66cc3f479224f2e712850fc8aa47cc3fe6e9e9c6d331b5bba0518e07eb1",
+      "git_blob": "617440cfeafc79badf48fd94cbb59e6f9e187c1e",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/HoverEnemy_1793951566605/extracted_image_0.jpg.picometa",
+      "size": 2105,
+      "sha256": "3aee18a5fe4af032b0f5fdf42f58ad185fd307b6a5200c68d59c46ad4ac784f9",
+      "git_blob": "2ac9f7ad75f6d835b48274684359408104738617",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/HoverEnemy_1793951566605/extracted_image_1.jpg_metallic.png",
+      "size": 840118,
+      "sha256": "f800d5adc902900a533b8c6e86402cf10e9a7bb571d4fe28c363e9d7aa72768f",
+      "git_blob": "ba1a547c8d1b048d71a35c998d9be31608a7fbf4",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/HoverEnemy_1793951566605/extracted_image_1.jpg_metallic.png.picometa",
+      "size": 2111,
+      "sha256": "f58506fa4b2c91fd87e7951b6d72966cdede7bf50568b56d56fde7bf2c9fb7ce",
+      "git_blob": "1291287fb851ce492bbd2b1d031404a66697ddfa",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/HoverEnemy_1793951566605/extracted_image_1.jpg_roughness.png",
+      "size": 1238501,
+      "sha256": "d81f47bddcdbe383821e328e9d13fd513ff8535b862808b0e4b3f50295753666",
+      "git_blob": "e31e6c623ece67481710e719565aeaeb3ade6ebc",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/HoverEnemy_1793951566605/extracted_image_1.jpg_roughness.png.picometa",
+      "size": 2111,
+      "sha256": "f58506fa4b2c91fd87e7951b6d72966cdede7bf50568b56d56fde7bf2c9fb7ce",
+      "git_blob": "1291287fb851ce492bbd2b1d031404a66697ddfa",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/HoverEnemy_1793951566605/extracted_image_2.jpg",
+      "size": 1867939,
+      "sha256": "2c695f97db7320fcc12722726de1af593ade3e4d2be586d88e5e1f004516a5aa",
+      "git_blob": "61d1385755bbfd2ae56c24f48a030342acd27d44",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/HoverEnemy_1793951566605/extracted_image_2.jpg.picometa",
+      "size": 2111,
+      "sha256": "f58506fa4b2c91fd87e7951b6d72966cdede7bf50568b56d56fde7bf2c9fb7ce",
+      "git_blob": "1291287fb851ce492bbd2b1d031404a66697ddfa",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/HoverEnemy_1793951566605/model.k34bpo3m.usdc",
+      "size": 3217994,
+      "sha256": "1dbeebb115a3f6a6e3f425fb787fa69e443aa757e9d9282af39263d5d9c2e855",
+      "git_blob": "663851af7e78d2b55ba72e80923d73b09ab7a12d",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/Lamp_1793951548853/extracted_image_0.jpg",
+      "size": 2314068,
+      "sha256": "a9e4163306d6e4cc2d9e06daea468a2097c53f8743c5cfa009c39e9689aefa9b",
+      "git_blob": "c985b37738a555552d43007188769d0aa2d00108",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/Lamp_1793951548853/extracted_image_0.jpg.picometa",
+      "size": 2105,
+      "sha256": "3aee18a5fe4af032b0f5fdf42f58ad185fd307b6a5200c68d59c46ad4ac784f9",
+      "git_blob": "2ac9f7ad75f6d835b48274684359408104738617",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/Lamp_1793951548853/extracted_image_1.jpg_metallic.png",
+      "size": 469324,
+      "sha256": "ee11a57ca90b18052ee29dcc96d16b705a7cf5cb63125660cc697125a4413f6a",
+      "git_blob": "333d636f6796ddeea62893df21f91680172a4cf9",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/Lamp_1793951548853/extracted_image_1.jpg_metallic.png.picometa",
+      "size": 2111,
+      "sha256": "f58506fa4b2c91fd87e7951b6d72966cdede7bf50568b56d56fde7bf2c9fb7ce",
+      "git_blob": "1291287fb851ce492bbd2b1d031404a66697ddfa",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/Lamp_1793951548853/extracted_image_1.jpg_roughness.png",
+      "size": 885630,
+      "sha256": "ac1ebfd4c7056122ab29dfc1cac6e0279c4cae2609c293b9a89523488c815da2",
+      "git_blob": "397d3695cb30e526c950c36e9e109ab72b71bd43",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/Lamp_1793951548853/extracted_image_1.jpg_roughness.png.picometa",
+      "size": 2111,
+      "sha256": "f58506fa4b2c91fd87e7951b6d72966cdede7bf50568b56d56fde7bf2c9fb7ce",
+      "git_blob": "1291287fb851ce492bbd2b1d031404a66697ddfa",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/Lamp_1793951548853/extracted_image_2.jpg",
+      "size": 1461991,
+      "sha256": "7da8283fc4987f81d253c6c7cffd3966bb6f9c8fb6b12b73b0abc59f7ee7e6de",
+      "git_blob": "03f51266c0904f8622b81e30a221e11d32af8b84",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/Lamp_1793951548853/extracted_image_2.jpg.picometa",
+      "size": 2111,
+      "sha256": "f58506fa4b2c91fd87e7951b6d72966cdede7bf50568b56d56fde7bf2c9fb7ce",
+      "git_blob": "1291287fb851ce492bbd2b1d031404a66697ddfa",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/Lamp_1793951548853/model.wydljig1.usdc",
+      "size": 3088931,
+      "sha256": "34225910204de379f28dd9f6fe785d5bbf74843082bf8e158df44473b6dc49fe",
+      "git_blob": "a8042243953e2503325bad2141a6b115ac710a99",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerLeg_1793951562142/extracted_image_0.jpg",
+      "size": 2678498,
+      "sha256": "8ef3969a4fb41aa31e199dbf7a6a447a85c3815d1ffba48badbe03c6583d043f",
+      "git_blob": "4803fb9aa0c05b4defad0be2e4d2c26d2216442b",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerLeg_1793951562142/extracted_image_0.jpg.picometa",
+      "size": 2105,
+      "sha256": "3aee18a5fe4af032b0f5fdf42f58ad185fd307b6a5200c68d59c46ad4ac784f9",
+      "git_blob": "2ac9f7ad75f6d835b48274684359408104738617",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerLeg_1793951562142/extracted_image_1.jpg_metallic.png",
+      "size": 712154,
+      "sha256": "1829f791f20e0fe8044b4722fd8303483b61ee74651b080a59fe75e5ded9ec73",
+      "git_blob": "1c7bc8100be729af132ab5aa1a88ad5c3e5a087e",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerLeg_1793951562142/extracted_image_1.jpg_metallic.png.picometa",
+      "size": 2111,
+      "sha256": "f58506fa4b2c91fd87e7951b6d72966cdede7bf50568b56d56fde7bf2c9fb7ce",
+      "git_blob": "1291287fb851ce492bbd2b1d031404a66697ddfa",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerLeg_1793951562142/extracted_image_1.jpg_roughness.png",
+      "size": 1218346,
+      "sha256": "338454dba2e04d97c461b44cd793020ffe0985f266f9292cb7ed0ee177f9a7d2",
+      "git_blob": "c1ef02c133cc2d24653940ab525c72d12d78b87f",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerLeg_1793951562142/extracted_image_1.jpg_roughness.png.picometa",
+      "size": 2111,
+      "sha256": "f58506fa4b2c91fd87e7951b6d72966cdede7bf50568b56d56fde7bf2c9fb7ce",
+      "git_blob": "1291287fb851ce492bbd2b1d031404a66697ddfa",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerLeg_1793951562142/extracted_image_2.jpg",
+      "size": 1874990,
+      "sha256": "c83ddfd42e5d3e21755f0bed3c3f3e85f6ba9aa0e292ba9038ffe1372e4099e4",
+      "git_blob": "0612c73a7d3aac85b14bd35aca7da87d4fc55346",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerLeg_1793951562142/extracted_image_2.jpg.picometa",
+      "size": 2111,
+      "sha256": "f58506fa4b2c91fd87e7951b6d72966cdede7bf50568b56d56fde7bf2c9fb7ce",
+      "git_blob": "1291287fb851ce492bbd2b1d031404a66697ddfa",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerLeg_1793951562142/model.4lej77o6.usdc",
+      "size": 3528187,
+      "sha256": "7784bc03f85a7de6cf68d55fb8d6bbfe34be1260cb78235c26a3afdd5df53ad2",
+      "git_blob": "a6221849fe2b906be5a2d71fca4ee2384494230d",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerSingleLegImage_1793953573829/extracted_image_0.png",
+      "size": 11382518,
+      "sha256": "f1382c45345f578423492a16cfeae55b8e58e4f6ace8afbb1893a05277c60d71",
+      "git_blob": "da1b53e737e6fca6b825d89e194ef84035b7cd94",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerSingleLegImage_1793953573829/extracted_image_0.png.picometa",
+      "size": 2111,
+      "sha256": "2feb2915a4f755ae50fab54aec97cb026208ada3f66a66b019425c7981e90840",
+      "git_blob": "e1e0a4579d127572ec78098160610f237d559cd5",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerSingleLegImage_1793953573829/extracted_image_1.jpg",
+      "size": 8649720,
+      "sha256": "3ade8add2a12ffe4f48d88d369069c32270a8edb390277faa0b94cc0e06b90e4",
+      "git_blob": "f738fa8424fc11eb363d9153106e746f38b190cd",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerSingleLegImage_1793953573829/extracted_image_1.jpg.picometa",
+      "size": 2105,
+      "sha256": "f5a8032910de28192e0c0e9c7a9fbad692d52bd8a51485b476df8b757a347bf9",
+      "git_blob": "fe90fe04a72764a09a799b7da99d47b0a488af81",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerSingleLegImage_1793953573829/extracted_image_2.jpg_metallic.png",
+      "size": 693595,
+      "sha256": "71da33b786706ba3a7315cd6bfdcc1c9f524b72637a594c5e32d99b3a0b096fe",
+      "git_blob": "bf59af4be2a9a281eb161540742fa00c9eeb9a1d",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerSingleLegImage_1793953573829/extracted_image_2.jpg_metallic.png.picometa",
+      "size": 2111,
+      "sha256": "f58506fa4b2c91fd87e7951b6d72966cdede7bf50568b56d56fde7bf2c9fb7ce",
+      "git_blob": "1291287fb851ce492bbd2b1d031404a66697ddfa",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerSingleLegImage_1793953573829/extracted_image_2.jpg_roughness.png",
+      "size": 913824,
+      "sha256": "0a9eb2bd393d21632ddcb2402b1e2b300cf448996d4500da9817875dfc7f7ef2",
+      "git_blob": "e893fee28367a5e3c8f4dfb7df351c3abd30101e",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerSingleLegImage_1793953573829/extracted_image_2.jpg_roughness.png.picometa",
+      "size": 2111,
+      "sha256": "f58506fa4b2c91fd87e7951b6d72966cdede7bf50568b56d56fde7bf2c9fb7ce",
+      "git_blob": "1291287fb851ce492bbd2b1d031404a66697ddfa",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerSingleLegImage_1793953573829/model.kdtb2vz_.usdc",
+      "size": 219888,
+      "sha256": "3d9790b6315db9d76ff07f4d8dab046c3d0c8ec3f04ba81f934dfb9200877f07",
+      "git_blob": "b2bf4c8bb4d04cee895bb4abe66dc8b3e71522b5",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorsoCorrected_1793952176752/extracted_image_0.jpg",
+      "size": 2575829,
+      "sha256": "9a18f36229c70ede96d23219d4f3ed2c093c03d4817bdf491b91fd47ca53b079",
+      "git_blob": "36be362d77338d1cf6e9004c0860717a39e4396f",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorsoCorrected_1793952176752/extracted_image_0.jpg.picometa",
+      "size": 2099,
+      "sha256": "a2824c69c5ce91a7b2e170ee7a4ede82cd68ef7510455ab58f8646be907d6dc1",
+      "git_blob": "238b486c190fdc7692489af1dfc9b7c0123688e6",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorsoCorrected_1793952176752/extracted_image_1.jpg_metallic.png",
+      "size": 571564,
+      "sha256": "085fc57436b98b1b1916a8dabf2f79ad52aba8460ed9ca2509887bcf84f522cf",
+      "git_blob": "9641f06f6a86c1fcbcc75d6baf251b25ef48b888",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorsoCorrected_1793952176752/extracted_image_1.jpg_metallic.png.picometa",
+      "size": 2105,
+      "sha256": "5023c72e1c4dc2604c277f409f4a1d752f9d34f201e1d2f3d969eb3ec1d13d56",
+      "git_blob": "dc1a581f6877391248a1a37a4dce4e047a4b45af",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorsoCorrected_1793952176752/extracted_image_1.jpg_roughness.png",
+      "size": 1062083,
+      "sha256": "f50eab0a7b6662b1effaceb20f704596800cb10b6300097f350f46f179054229",
+      "git_blob": "7b1916120800e19cea4b9338c878ef3a4422f3d8",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorsoCorrected_1793952176752/extracted_image_1.jpg_roughness.png.picometa",
+      "size": 2105,
+      "sha256": "5023c72e1c4dc2604c277f409f4a1d752f9d34f201e1d2f3d969eb3ec1d13d56",
+      "git_blob": "dc1a581f6877391248a1a37a4dce4e047a4b45af",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorsoCorrected_1793952176752/extracted_image_2.jpg",
+      "size": 1813948,
+      "sha256": "5382cc53ed1354c9bdc7ae6b9113df26f92356a28096956bd99621b702862d26",
+      "git_blob": "d2e88fbbbcd66fcdcba0f84b92181eb74ae61797",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorsoCorrected_1793952176752/extracted_image_2.jpg.picometa",
+      "size": 2105,
+      "sha256": "5023c72e1c4dc2604c277f409f4a1d752f9d34f201e1d2f3d969eb3ec1d13d56",
+      "git_blob": "dc1a581f6877391248a1a37a4dce4e047a4b45af",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorsoCorrected_1793952176752/model.0ec_ebh7.usdc",
+      "size": 405153,
+      "sha256": "1a78677f2206fb8e07d7ddbf16551f972c62c8bfe8b3311076f3617804627b39",
+      "git_blob": "97058522481ba39b9fcebacdab9c312152712fb6",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorsoCorrected_A_1793952427753/extracted_image_0.jpg",
+      "size": 2028720,
+      "sha256": "a495634085dd79b62595fa911396ef53c7f6d07de3f1c039017b0dcd5558b29a",
+      "git_blob": "72467c64a2b9ff30d3b37107e17545244024751f",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorsoCorrected_A_1793952427753/extracted_image_0.jpg.picometa",
+      "size": 2099,
+      "sha256": "a2824c69c5ce91a7b2e170ee7a4ede82cd68ef7510455ab58f8646be907d6dc1",
+      "git_blob": "238b486c190fdc7692489af1dfc9b7c0123688e6",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorsoCorrected_A_1793952427753/extracted_image_1.jpg_metallic.png",
+      "size": 556515,
+      "sha256": "4f4153469da01ae7e80f434f2f526c19e89e600695dbafdbc85c12d65ceae09f",
+      "git_blob": "03534ec3ecbd9d23dd768283df0cdf36cb443765",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorsoCorrected_A_1793952427753/extracted_image_1.jpg_metallic.png.picometa",
+      "size": 2105,
+      "sha256": "5023c72e1c4dc2604c277f409f4a1d752f9d34f201e1d2f3d969eb3ec1d13d56",
+      "git_blob": "dc1a581f6877391248a1a37a4dce4e047a4b45af",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorsoCorrected_A_1793952427753/extracted_image_1.jpg_roughness.png",
+      "size": 1039510,
+      "sha256": "d0bcca300b31f4e512bd3a70ca32c3a1236417d0de1fa4c98ef223c6e1dad779",
+      "git_blob": "be8c39e2186e091564e1a1065322b5a25f136784",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorsoCorrected_A_1793952427753/extracted_image_1.jpg_roughness.png.picometa",
+      "size": 2105,
+      "sha256": "5023c72e1c4dc2604c277f409f4a1d752f9d34f201e1d2f3d969eb3ec1d13d56",
+      "git_blob": "dc1a581f6877391248a1a37a4dce4e047a4b45af",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorsoCorrected_A_1793952427753/extracted_image_2.jpg",
+      "size": 1422632,
+      "sha256": "0de0f89f6ad37ec99b10d1ed934f247253c18383939f10a82f01691b956c9e30",
+      "git_blob": "0d94c529890e3b489afbb1f83a04d12614fcd731",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorsoCorrected_A_1793952427753/extracted_image_2.jpg.picometa",
+      "size": 2105,
+      "sha256": "5023c72e1c4dc2604c277f409f4a1d752f9d34f201e1d2f3d969eb3ec1d13d56",
+      "git_blob": "dc1a581f6877391248a1a37a4dce4e047a4b45af",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorsoCorrected_A_1793952427753/model.6_0k0r20.usdc",
+      "size": 337124,
+      "sha256": "7f7111905763060917efa3616fb7d4540057ba7b5329e8bfe66134b8e48a346f",
+      "git_blob": "d416f0144e43d0d9c33f66f823f72e6462f99878",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorsoCorrected_B_1793952783830/extracted_image_0.jpg",
+      "size": 2121981,
+      "sha256": "ac804669dc51413970e32ae4bffecfc6200f3f2b68540425c6ac7c7c6dbbb532",
+      "git_blob": "eac72087e5e5c50d6061058917052bb7a400d684",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorsoCorrected_B_1793952783830/extracted_image_0.jpg.picometa",
+      "size": 2105,
+      "sha256": "3aee18a5fe4af032b0f5fdf42f58ad185fd307b6a5200c68d59c46ad4ac784f9",
+      "git_blob": "2ac9f7ad75f6d835b48274684359408104738617",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorsoCorrected_B_1793952783830/extracted_image_1.jpg_metallic.png",
+      "size": 596632,
+      "sha256": "07df191725580841ded7cc4eb4d24176d1c6f106b9b52d172d35a96e90955972",
+      "git_blob": "077cc3e92e1ba617318520cd9259090b092c7492",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorsoCorrected_B_1793952783830/extracted_image_1.jpg_metallic.png.picometa",
+      "size": 2111,
+      "sha256": "f58506fa4b2c91fd87e7951b6d72966cdede7bf50568b56d56fde7bf2c9fb7ce",
+      "git_blob": "1291287fb851ce492bbd2b1d031404a66697ddfa",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorsoCorrected_B_1793952783830/extracted_image_1.jpg_roughness.png",
+      "size": 884176,
+      "sha256": "9786a3bce1a11a4b88a10864230c5c8f6736f769200604a6531667bc468cc23b",
+      "git_blob": "80cf2b9620848f1c371400c03debc872aa63221a",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorsoCorrected_B_1793952783830/extracted_image_1.jpg_roughness.png.picometa",
+      "size": 2111,
+      "sha256": "f58506fa4b2c91fd87e7951b6d72966cdede7bf50568b56d56fde7bf2c9fb7ce",
+      "git_blob": "1291287fb851ce492bbd2b1d031404a66697ddfa",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorsoCorrected_B_1793952783830/extracted_image_2.jpg",
+      "size": 1418194,
+      "sha256": "1901262d478a01ee4f0777c113a3927582b432599fab0a7698d8b31e71552eee",
+      "git_blob": "0cdfaee20cabb95fdee3638f95d256ce4cd96132",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorsoCorrected_B_1793952783830/extracted_image_2.jpg.picometa",
+      "size": 2111,
+      "sha256": "f58506fa4b2c91fd87e7951b6d72966cdede7bf50568b56d56fde7bf2c9fb7ce",
+      "git_blob": "1291287fb851ce492bbd2b1d031404a66697ddfa",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorsoCorrected_B_1793952783830/model.sz9dwnvw.usdc",
+      "size": 280467,
+      "sha256": "cfb60a54351cd562b3286af1ed237ce3b2be54bdd3aca5a771197b624924aef7",
+      "git_blob": "b5005d95e2b463c0d67897db50b5e75ecf2539fa",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorso_1793951561403/extracted_image_0.jpg",
+      "size": 2940493,
+      "sha256": "5d15f7907401efc6c2460cd79503660bb967a066e8de0b074cbdf6987b85edf7",
+      "git_blob": "457ae8db2c9dc93326a04f786f3428dbea01400d",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorso_1793951561403/extracted_image_0.jpg.picometa",
+      "size": 2105,
+      "sha256": "3aee18a5fe4af032b0f5fdf42f58ad185fd307b6a5200c68d59c46ad4ac784f9",
+      "git_blob": "2ac9f7ad75f6d835b48274684359408104738617",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorso_1793951561403/extracted_image_1.jpg_metallic.png",
+      "size": 878877,
+      "sha256": "a46b7128b5bdbb5da71b65e20a9d7accb6a61d2e73d7ae04345623c89d1d6b9e",
+      "git_blob": "8a63425c1ce2fd32a2eec6df98e27009c88bcd12",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorso_1793951561403/extracted_image_1.jpg_metallic.png.picometa",
+      "size": 2111,
+      "sha256": "f58506fa4b2c91fd87e7951b6d72966cdede7bf50568b56d56fde7bf2c9fb7ce",
+      "git_blob": "1291287fb851ce492bbd2b1d031404a66697ddfa",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorso_1793951561403/extracted_image_1.jpg_roughness.png",
+      "size": 1303929,
+      "sha256": "d8081d605e429f591e07d19e501f18298742880d02b81b6653b2ece822ee4271",
+      "git_blob": "7588953f5cfd3d376a5dbd96f435c9f2f20d7715",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorso_1793951561403/extracted_image_1.jpg_roughness.png.picometa",
+      "size": 2111,
+      "sha256": "f58506fa4b2c91fd87e7951b6d72966cdede7bf50568b56d56fde7bf2c9fb7ce",
+      "git_blob": "1291287fb851ce492bbd2b1d031404a66697ddfa",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorso_1793951561403/extracted_image_2.jpg",
+      "size": 2054732,
+      "sha256": "262fac2f31132a3585276872f49029e5c6085dd583c63985e51926090070b421",
+      "git_blob": "b056b7bb53aed3073fbb20c02f67256c1021dde8",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorso_1793951561403/extracted_image_2.jpg.picometa",
+      "size": 2111,
+      "sha256": "f58506fa4b2c91fd87e7951b6d72966cdede7bf50568b56d56fde7bf2c9fb7ce",
+      "git_blob": "1291287fb851ce492bbd2b1d031404a66697ddfa",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerTorso_1793951561403/model.i0bg0gel.usdc",
+      "size": 3335069,
+      "sha256": "7e751f6a94a3e3665037420b18591fcb579dfe01e4fe801278114dc99ef16fb7",
+      "git_blob": "d38005b830a76d33dfbab84f2e7446835f36c371",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerUpperImage_1793953577253/extracted_image_0.png",
+      "size": 8856784,
+      "sha256": "6dc8a01bdd65401e04445c941e056cd5fd24f00c9972709f5d8a7772dfb6cfca",
+      "git_blob": "0cab9536f31b4785586208da5a5428a86d879f38",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerUpperImage_1793953577253/extracted_image_0.png.picometa",
+      "size": 2111,
+      "sha256": "2feb2915a4f755ae50fab54aec97cb026208ada3f66a66b019425c7981e90840",
+      "git_blob": "e1e0a4579d127572ec78098160610f237d559cd5",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerUpperImage_1793953577253/extracted_image_1.jpg",
+      "size": 6244302,
+      "sha256": "077f919bd2f341f2262d0ca1f2c47bc8234ccd52d5560ef1b975ae598b6b6fd8",
+      "git_blob": "458448aa44561f492c7cd7d14411266eebb00aa4",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerUpperImage_1793953577253/extracted_image_1.jpg.picometa",
+      "size": 2105,
+      "sha256": "f5a8032910de28192e0c0e9c7a9fbad692d52bd8a51485b476df8b757a347bf9",
+      "git_blob": "fe90fe04a72764a09a799b7da99d47b0a488af81",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerUpperImage_1793953577253/extracted_image_2.jpg_metallic.png",
+      "size": 627076,
+      "sha256": "ba92c2de71d0ff4ec54bb50b466204c55411faa5d0a654608c76b4bc358a8e87",
+      "git_blob": "1bede28a3892b8c83850844ef2448079c5a857b7",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerUpperImage_1793953577253/extracted_image_2.jpg_metallic.png.picometa",
+      "size": 2111,
+      "sha256": "f58506fa4b2c91fd87e7951b6d72966cdede7bf50568b56d56fde7bf2c9fb7ce",
+      "git_blob": "1291287fb851ce492bbd2b1d031404a66697ddfa",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerUpperImage_1793953577253/extracted_image_2.jpg_roughness.png",
+      "size": 1059392,
+      "sha256": "342ae44d41f624488e5f7e17d8c573a52b5beea7cf3573c69ed9a3448f307384",
+      "git_blob": "14a1bdec08de2173f03926c96d2ed4ae4d74ef83",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerUpperImage_1793953577253/extracted_image_2.jpg_roughness.png.picometa",
+      "size": 2111,
+      "sha256": "f58506fa4b2c91fd87e7951b6d72966cdede7bf50568b56d56fde7bf2c9fb7ce",
+      "git_blob": "1291287fb851ce492bbd2b1d031404a66697ddfa",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/RunnerUpperImage_1793953577253/model.w_9wzwqk.usdc",
+      "size": 339699,
+      "sha256": "207c439377ed8e17dc6559cf47351207747e869c09935a5cf2ae67289fc4f76b",
+      "git_blob": "37f22f0c57b444f0d47d181d40fde8d690bc2992",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/SupplyCrate_1793951588213/extracted_image_0.jpg",
+      "size": 2784523,
+      "sha256": "9b9c160fbdd2bf97ce1746828f190ca8082e5b50dc2505e20544883cb2dc5d02",
+      "git_blob": "9bcb61329e9d1f9e3173148baf133951540dcc41",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/SupplyCrate_1793951588213/extracted_image_0.jpg.picometa",
+      "size": 2105,
+      "sha256": "3aee18a5fe4af032b0f5fdf42f58ad185fd307b6a5200c68d59c46ad4ac784f9",
+      "git_blob": "2ac9f7ad75f6d835b48274684359408104738617",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/SupplyCrate_1793951588213/extracted_image_1.jpg_metallic.png",
+      "size": 766588,
+      "sha256": "e8910281623f0532bad8cb6e036e1db541a1046cd5af3eb5c1448e536ed395bc",
+      "git_blob": "6323d1d91081bb6643dfac5dbb714be95f2c76a7",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/SupplyCrate_1793951588213/extracted_image_1.jpg_metallic.png.picometa",
+      "size": 2111,
+      "sha256": "f58506fa4b2c91fd87e7951b6d72966cdede7bf50568b56d56fde7bf2c9fb7ce",
+      "git_blob": "1291287fb851ce492bbd2b1d031404a66697ddfa",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/SupplyCrate_1793951588213/extracted_image_1.jpg_roughness.png",
+      "size": 1204584,
+      "sha256": "181d546b39607b802cf870c2d0dc859490f09722f018d7c8902529fe093e5437",
+      "git_blob": "708083a16cec280cc341d0b642e9a5bd2bf9c36f",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/SupplyCrate_1793951588213/extracted_image_1.jpg_roughness.png.picometa",
+      "size": 2111,
+      "sha256": "f58506fa4b2c91fd87e7951b6d72966cdede7bf50568b56d56fde7bf2c9fb7ce",
+      "git_blob": "1291287fb851ce492bbd2b1d031404a66697ddfa",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/SupplyCrate_1793951588213/extracted_image_2.jpg",
+      "size": 1628037,
+      "sha256": "95b646a23612fe07eb85a6f92abf05cb78f22f64c2ed8bb03cb3487d519a72a4",
+      "git_blob": "dd97bfc468f5a7c9f86d65371772e482c36f5f42",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/SupplyCrate_1793951588213/extracted_image_2.jpg.picometa",
+      "size": 2111,
+      "sha256": "f58506fa4b2c91fd87e7951b6d72966cdede7bf50568b56d56fde7bf2c9fb7ce",
+      "git_blob": "1291287fb851ce492bbd2b1d031404a66697ddfa",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/.Library/SupplyCrate_1793951588213/model.wcf215it.usdc",
+      "size": 3393220,
+      "sha256": "8671546df271115c52fde8d3fea95f59ae30f518b9eb1a23bbcbe8cd6d72fc05",
+      "git_blob": "4036825932861ea0652854773727d91bf0f70d66",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/Sources/AI-Asset/Blaster.usdz",
+      "size": 10716105,
+      "sha256": "81a5eb45f2cc54dbd59533a77900e634eb4f939f0d4a5ad17c8d60e449ef74c8",
+      "git_blob": "ebd980b4485c0265b2bd87c9a199dae91dfd70cb",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/Sources/AI-Asset/GateFrame.usdz",
+      "size": 8101349,
+      "sha256": "bdd486d98c89c7bcb7d4c3c3842552d53bf1f78b38e6c6b0819846329a4f21a8",
+      "git_blob": "f3c10de3cd91a2d9cda1b48182adb34e226748b1",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/Sources/AI-Asset/HoverEnemy.usdz",
+      "size": 10029239,
+      "sha256": "415f74793935cf4124ea2462dfead6aa4bf5c615afcee51d1e2b8ef0ff65e74b",
+      "git_blob": "635ac57a709f59c476dc9aa21bffb7501737d406",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/Sources/AI-Asset/Lamp.usdz",
+      "size": 8221030,
+      "sha256": "deaf1844f61be4c0554e5aeda9a5300579f87eaf51edf16eee164ef65a42ad87",
+      "git_blob": "f2e6a0aa17199f8f12dc43575d3e8d1e2e23480e",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/Sources/AI-Asset/RunnerLeg.usdz",
+      "size": 10013083,
+      "sha256": "85fbae4f5cd2a6aa8fb1fa5d2c0c8359e329c550cf4308bf6f220dbe13743785",
+      "git_blob": "dd7f6401e9ddf8a0a886f655c0d24b6240a9eb15",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/Sources/AI-Asset/RunnerSingleLegImage.usdz",
+      "size": 21860477,
+      "sha256": "45147f219891f9fd1d4a7a56d63836ace75efdf97e2911ca37bec350a1b76bae",
+      "git_blob": "e67dafbdc447a3a2eea279cfdd9e56c1a5553566",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/Sources/AI-Asset/RunnerTorso.usdz",
+      "size": 10514100,
+      "sha256": "16301721fac0c10e634f861f111f3e66d0d5de7a4a4b01fdf08a6782dd376e95",
+      "git_blob": "22866dfbdc19296ccc667fff1b49a8d2e406d541",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/Sources/AI-Asset/RunnerTorsoCorrected.usdz",
+      "size": 6429551,
+      "sha256": "58296126475aea4f5cf97aef979516bd2939fa4851b2f8a26cb61ae90190bc36",
+      "git_blob": "899ec971c3e4ba5f5d25975a7f358ee34bcee20e",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/Sources/AI-Asset/RunnerTorsoCorrected_A.usdz",
+      "size": 5385489,
+      "sha256": "bb95b090adc69baaf28e776b55dc284f89491bd21b5fa594b42d489b2184a65e",
+      "git_blob": "43c48c555de6e2ac848c08e431eea7c56731abeb",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/Sources/AI-Asset/RunnerTorsoCorrected_B.usdz",
+      "size": 5302550,
+      "sha256": "ccd4bdffdc604ef2db7e85f2f1879e7f191bc9b44385af7fe59bb29352f5870c",
+      "git_blob": "24a7edadb6334217045ffba728aebc9733216023",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/Sources/AI-Asset/RunnerUpperImage.usdz",
+      "size": 17128109,
+      "sha256": "fdaf989d8e0518003a5755e82a158473cc634aeb39532786b1d9af1fb4e0fd40",
+      "git_blob": "f230969920782e74d8ebfecaeacac96b21bfc357",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/Sources/AI-Asset/SupplyCrate.usdz",
+      "size": 9777860,
+      "sha256": "00063aa17024a538972f8fa2f4dc117cf193ab358e6336d44159417dc6071cff",
+      "git_blob": "26a83c87c9f7cb058284d084c1aea89a77da6876",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/Sources/Scenes/GateRushArena.usda",
+      "size": 1367,
+      "sha256": "219c3ab837effe8dfb930ca01700cb0b6e7017c9ca382197095fbda1ad5da9ba",
+      "git_blob": "9ccaa7eea9b18a173fdd2b028eb40c437ef9e8c0",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/Sources/Scenes/Hi.usda",
+      "size": 100,
+      "sha256": "bf5f7a9af184c7e5cf741642cab737b854eb9aa80726e09d5ff6f0a3924c7f63",
+      "git_blob": "c18429dc54c0ec2c58dc21eb1f761afec84a32db",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/UserSettings/EditorSceneSettings.yaml",
+      "size": 21,
+      "sha256": "dfd83b43cd0c8e5e0025d69cf572afc2b1d4c9f7a23f681b41b87dae901cb20c",
+      "git_blob": "76294d4c76910bb9a976e5c4f4c352c4e33c54c6",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/UserSettings/EditorUserSettings.yaml",
+      "size": 1399,
+      "sha256": "6d414d54d2a8e53e52e30df31c3217378c9ab11f4a00d5f2cedd4c14f33ec90b",
+      "git_blob": "a6ff78b8f41093904c90ec0ea995f03518ed2b03",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/UserSettings/EditorViewportSettings.yaml",
+      "size": 145,
+      "sha256": "74c711b251e57007495761bd1763207767b610d517578e2a2f3b663521549923",
+      "git_blob": "f8ce2404e0342d5c138b9396587c8906b98e034a",
+      "mode": "100644"
+    },
+    {
+      "path": "editor-asset/src/main/res3d/SpatialPackContent/UserSettings/history.json",
+      "size": 59,
+      "sha256": "ff9694ea690369089c18d37bfbf65c1a4040074b9c0d778a7b604de6b78d2b0e",
+      "git_blob": "d5a9d618b6fb9ba86f59683733bbddf989d5f6cf",
+      "mode": "100644"
+    },
+    {
+      "path": "gradle/libs.versions.toml",
+      "size": 1827,
+      "sha256": "a658a95d675fe92a504d2e155de852f80b03592f0c48688a349c29ff9a6dbd36",
+      "git_blob": "a54d5f4fa218bb149a5d65b63ea1fa47f8d8737e",
+      "mode": "100644"
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.jar",
+      "size": 59203,
+      "sha256": "e996d452d2645e70c01c11143ca2d3742734a28da2bf61f25c82bdc288c9e637",
+      "git_blob": "e708b1c023ec8b20f512888fe07c5bd3ff77bb8f",
+      "mode": "100644"
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.properties",
+      "size": 251,
+      "sha256": "cdab1ffb439219b1db125e3c99a86cf2424f8762b9b3faa404ed061e3635ecde",
+      "git_blob": "37f853b1c84d2e2dd1c88441fcc755d7f6643668",
+      "mode": "100644"
+    }
+  ],
+  "release_apks": [
+    {
+      "name": "GateRush-0.4.apk",
+      "size": 53756200,
+      "sha256": "60071968a507029afa96d02e4bb972fb68f4c5c7c98a7e1e73d1e05e2532c948",
+      "git_blob": "840aadc647fe47cd57208c409f163461560ba939",
+      "mode": "100644"
+    }
+  ],
+  "excluded": [
+    "Build outputs, Gradle/editor/tool caches, IDE configuration, credentials and local.properties",
+    "Older delivery archives and APKs",
+    "Workflow gateway request/response archives containing transient authorization context",
+    "Scratch runtime logs; source design, provenance, model guides and review documents retained"
+  ]
+}

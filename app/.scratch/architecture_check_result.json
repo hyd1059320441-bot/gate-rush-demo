@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "summary": {
+    "errors": 0,
+    "warnings": 1,
+    "info": 0
+  },
+  "findings": [
+    {
+      "severity": "warning",
+      "rule": "A1",
+      "message": "Main.kt/App.kt not found under src/main or app/src/main — skipping size check.",
+      "file": null
+    }
+  ]
+}
